@@ -140,14 +140,14 @@ wp-content/wordpress-importer/
 /sitemap.xml
 /sitemap.xml.gz
 
-development/*
-!development/wp-content/
+builds/development/*
+!builds/development/wp-content/
 
-development/wp-content/*
-!development/wp-content/themes/
+builds/development/wp-content/*
+!builds/development/wp-content/themes/
 
-development/wp-content/themes/*
-!development/wp-content/themes/sac/
+builds/development/wp-content/themes/*
+!builds/development/wp-content/themes/sac/
 
 
 # End of https://www.gitignore.io/api/windows,macos,grunt,node,bower,sass,wordpress
