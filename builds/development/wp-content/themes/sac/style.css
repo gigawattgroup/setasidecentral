@@ -1,0 +1,39 @@
+/*
+Theme Name: Set Aside Centeral
+Theme URI: http://setasidecentral.com
+Author: The Gigawatt Group
+Author URI: http://gigawattgroup.com
+Description: A Responsive WordPress theme built by <a href="http://gigawattgroup.com">The Gigawatt Group</a>.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: sac
+Tags:
+
+This theme has been designed and developed by Amir Mishani <mamir1358@gmail.com> and Brigitta Blair <brigittablair@gmail.com> at The Gigawatt Group.
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Typography
+# Elements
+# Forms
+# Navigation
+	## Links
+	## Menus
+# Accessibility
+# Alignments
+# Clearings
+# Widgets
+# Content
+	## Posts and pages
+	## Comments
+# Infinite scroll
+# Media
+	## Captions
+	## Galleries
+--------------------------------------------------------------*/
+
+@import "css/main.css";

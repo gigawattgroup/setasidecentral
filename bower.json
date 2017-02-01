@@ -1,0 +1,29 @@
+{
+  "name": "setasidecentral",
+  "description": "Set Aside Central WordPress website",
+  "main": "index.php",
+  "authors": [
+    "The Gigawattgroup <info@gigawattgroup.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "WordPress",
+    "Responsive"
+  ],
+  "homepage": "https://github.com/gigawattgroup/setasidecentral",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "owl.carousel": "^2.2.0",
+    "object-fit": "^0.4.2",
+    "scrollmagic": "^2.0.5",
+    "gsap": "^1.19.1",
+    "jquery-animateNumber": "^0.0.14"
+  }
+}
