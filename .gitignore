@@ -140,6 +140,8 @@ wp-content/wordpress-importer/
 /sitemap.xml
 /sitemap.xml.gz
 
+!builds/development/
+
 builds/development/*
 !builds/development/wp-content/
 
