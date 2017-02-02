@@ -131,5 +131,7 @@ builds/development/wp-content/*
 builds/development/wp-content/themes/*
 !builds/development/wp-content/themes/sac/
 
+builds/development/wp-content/themes/sac/**/*.DS_Store
+
 
 # End of https://www.gitignore.io/api/windows,macos,grunt,node,bower,sass,wordpress
