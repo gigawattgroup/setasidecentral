@@ -158,7 +158,7 @@
       text-align: right;
     }
 
-    .entry-map, .entry-content {
+    .entry-map, .entry-container {
       float: left;
       width: 100%;
     }
@@ -167,22 +167,41 @@
       @include breakpoint($screen-sm) { width: 70%; }
     }
 
-    .entry-content {
-      background-color: rgba($color__dark, 0.6);
+    .entry-container {
+      position: relative;
       padding: 2em;
-      width: 0px;
-      transition: all 1s;
-      transition-delay: 1s;
+      width: 100%;
+      margin-top: -20%;
+      margin-left: 0;
       @include breakpoint($screen-sm) {
-        //width: 50%;
-        //margin-left: -20%;
+        width: 50%;
+        margin-top: 0;
+        margin-left: -20%;
+      }
+
+      .bcg {
+        background-color: rgba($color__dark, 0.6);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        transition: all 1s;
+        transition-delay: 1s;
+        z-index: 1;
+      }
+
+      .entry-content {
+        position: relative;
+        z-index: 2;
+        margin: 0;
+        padding: 0;
       }
 
       &.slide-right {
-        width: 100%;
-        @include breakpoint($screen-sm) {
-          width: 50%;
-          margin-left: -20%;
+
+        .bcg {
+          width: 100%;
         }
 
         h2, ul, ol {
@@ -204,7 +223,7 @@
         margin: 0;
         opacity: 0;
       }
-    }
+    } //.entry-container
 
     .new-line {
       display: block;
@@ -280,19 +299,51 @@
     }
 
     .entry-image {
+      position: relative;
+      display: none;
       float: left;
-      background-position: bottom;
-      background-repeat: no-repeat;
-      background-size: cover;
-      width: 50%;
-      padding: 5em 1em // must match .entry-content padding
-    }
+      width: 100%;
+      padding: 5em 1em; // must match .entry-content padding
+      overflow: hidden;
+      transform-origin: 0 0;
+
+      @include breakpoint($screen-sm) {
+        display: block;
+        width: 50%;
+        padding: 5em 1em; // must match .entry-content padding
+      }
+
+      .bcg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: 1200ms all ease-in-out;
+      }
+
+      &:hover {
+        .bcg {
+          width: 110%;
+          height: 110%;
+          top: -5%;
+          left: -5%;
+        }
+      }
+    } //.entry-image
 
     .entry-content {
-      width: 50%;
+      width: 100%;
       float: left;
       margin: 0;
       padding: 5em 3em 5em .5em;
+
+      @include breakpoint($screen-sm) {
+        width: 50%;
+      }
     }
   }
 
@@ -303,7 +354,7 @@
     //margin-bottom: -10px;
 
     .entry-link {
-      width: 25%;
+      width: 50%;
       float: left;
       position: relative;
       text-align: center;
@@ -311,6 +362,10 @@
       position: relative;
       background-color: $color__blue;
       height: 25em; // must match image height
+
+      @include breakpoint($screen-sm) {
+        width: 25%;
+      }
 
       &:hover {
         img {

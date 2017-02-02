@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Set_Aside_Centeral
+ * @package Set_Aside_Central
  */
 
 if ( ! is_active_sidebar( 'sidebar-1' ) ) {

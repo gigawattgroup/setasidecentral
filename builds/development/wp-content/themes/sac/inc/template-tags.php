@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package Set_Aside_Centeral
+ * @package Set_Aside_Central
  */
 
 if ( ! function_exists( 'sac_posted_on' ) ) :

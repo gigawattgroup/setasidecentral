@@ -1,10 +1,10 @@
 <?php
 /**
- * Set Aside Centeral functions and definitions
+ * Set Aside Cntral functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package Set_Aside_Centeral
+ * @package Set_Aside_Central
  */
 
 if ( ! function_exists( 'sac_setup' ) ) :
@@ -19,7 +19,7 @@ function sac_setup() {
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on Set Aside Centeral, use a find and replace
+	 * If you're building a theme based on Set Aside Cntral, use a find and replace
 	 * to change 'sac' to the name of your theme in all the template files.
 	 */
 	load_theme_textdomain( 'sac', get_template_directory() . '/languages' );

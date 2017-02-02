@@ -7,7 +7,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Set_Aside_Centeral
+ * @package Set_Aside_Central
  */
 
 /*

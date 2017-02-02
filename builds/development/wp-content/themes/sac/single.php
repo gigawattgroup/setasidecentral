@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package Set_Aside_Centeral
+ * @package Set_Aside_Central
  */
 
 get_header(); ?>
