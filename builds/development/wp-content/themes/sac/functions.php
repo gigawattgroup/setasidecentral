@@ -46,6 +46,8 @@ function sac_setup() {
 	register_nav_menus( array(
 		'header' => esc_html__( 'Primary', 'sac' ),
 		'footer' => esc_html__( 'Footer', 'sac' ),
+		'about' => esc_html__( 'About', 'sac' ),
+		'learn' => esc_html__( 'Learn', 'sac' ),
 	) );
 
 	/*

@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying page content in page.php
+ * Template part for displaying page content in /template-pages/home.php
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -37,7 +37,7 @@
 </div><!-- .section-carousel -->
 
 <div class="section-about">
-	<div class="bcg" style="background-image:url('http://setaside.dev/wp-content/themes/sac/images/monument.jpg')"></div>
+	<div class="bcg" style="background-image:url('http://setaside.dev/wp-content/themes/sac/images/stock/monument.jpg')"></div>
 	<div class="container">
 		<h2 class="entry-title">What Set Aside Central Does</h2>
 		<div id="section-about-content" class="entry-content">
@@ -46,14 +46,14 @@
 	</div>
 </div><!-- .section-about -->
 
-<div class="section-map" style="background-image:url('http://setaside.dev/wp-content/themes/sac/images/flag_red.jpg')">
+<div class="section-map" style="background-image:url('http://setaside.dev/wp-content/themes/sac/images/stock/flag_red.jpg')">
 	<video class="video-bg" autoplay loop="true" width="960" height="540">
-    <source type="video/mp4" src="http://setaside.dev/wp-content/themes/sac/images/flag.mp4">
+    <source type="video/mp4" src="http://setaside.dev/wp-content/themes/sac/images/stock/flag.mp4">
   </video>
 	<div class="overlay"></div>
 	<div class="container">
 		<h2 class="entry-title"><span class="new-line">more than <span id="hubzone-contractors" class="text-large">5,000</span> Hubzone Certified Contractors Nationwide</span> <span class="new-line">employing over <span id="hubzone-employed" class="text-large">75,000</span> people</span></h2>
-		<div class="entry-map"><img src="http://setaside.dev/wp-content/themes/sac/images/map.png" alt="HUBZones Map"></div>
+		<div class="entry-map"><img src="http://setaside.dev/wp-content/themes/sac/images/stock/map.png" alt="HUBZones Map"></div>
 		<div id="section-map-content" class="entry-container">
 				<div class="bcg"></div>
 				<div class="entry-content">
@@ -79,25 +79,25 @@
 		</div>
 	</div>
 	<div class="entry-image equalheights">
-		<div class="bcg" style="background-image:url('http://setaside.dev/wp-content/themes/sac/images/hubzones.jpg')"></div>
+		<div class="bcg" style="background-image:url('http://setaside.dev/wp-content/themes/sac/images/stock/hubzones.jpg')"></div>
 	</div>
 </div><!-- .section-hubzones -->
 
 <div class="section-more">
 	<div class="entry-link">
-		<a href="#"><img src="http://setaside.dev/wp-content/themes/sac/images/image1.jpg" alt="More on HubZones"></a>
+		<a href="#"><img src="http://setaside.dev/wp-content/themes/sac/images/stock/image1.jpg" alt="More on HubZones"></a>
 		<h2>More on HubZones</h2>
 	</div>
 	<div class="entry-link">
-		<a href="#"><img src="http://setaside.dev/wp-content/themes/sac/images/image2.jpg" alt="Get Certified As a HUBZone"></a>
+		<a href="#"><img src="http://setaside.dev/wp-content/themes/sac/images/stock/image2.jpg" alt="Get Certified As a HUBZone"></a>
 		<h2>Get Certified As a HUBZone</h2>
 	</div>
 	<div class="entry-link">
-		<a href="#"><img src="http://setaside.dev/wp-content/themes/sac/images/image3.jpg" alt="Small Business Owners"></a>
+		<a href="#"><img src="http://setaside.dev/wp-content/themes/sac/images/stock/image3.jpg" alt="Small Business Owners"></a>
 		<h2>Small Business Owners</h2>
 	</div>
 	<div class="entry-link">
-		<a href="#"><img src="http://setaside.dev/wp-content/themes/sac/images/image4.jpg" alt="OSDBU"></a>
+		<a href="#"><img src="http://setaside.dev/wp-content/themes/sac/images/stock/image4.jpg" alt="OSDBU"></a>
 		<h2>OSDBU</h2>
 	</div>
 </div><!-- .section-more -->

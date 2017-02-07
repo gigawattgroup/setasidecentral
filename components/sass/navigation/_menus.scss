@@ -235,3 +235,48 @@
 
 
 } //.site-header
+
+
+#page-menu {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+
+	a {
+		@include font-size(0.875);
+		text-transform: uppercase;
+		color: $color__light;
+		&:hover, &:focus {
+			color: lighten($color__blue, 20%);
+		}
+	}
+
+	li {
+		@include breakpoint($screen-sm) {
+			float: left;
+			text-align: center;
+		}
+
+		&::after {
+			@include breakpoint($screen-sm) {
+				content: '';
+				border-left: 1px solid $color__light;
+				color: $color__light;
+				margin: 0 40px;
+			}
+		}
+
+		&:last-child::after {
+			@include breakpoint($screen-sm) {
+				content: '';
+				border: none;
+			}
+		}
+	} // li
+
+	@include breakpoint($screen-sm) {
+		margin: 0 auto;
+		display: inline-block;
+	}
+} //#page-menu
