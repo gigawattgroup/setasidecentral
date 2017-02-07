@@ -1,8 +1,8 @@
 <?php
 /**
- * Set Aside Centeral Theme Customizer
+ * Set Aside Cntral Theme Customizer
  *
- * @package Set_Aside_Centeral
+ * @package Set_Aside_Central
  */
 
 /**

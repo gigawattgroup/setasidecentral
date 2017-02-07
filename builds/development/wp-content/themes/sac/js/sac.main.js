@@ -152,6 +152,133 @@
 !function(t){"use strict";"object"==typeof module&&"object"==typeof module.exports?t(require("jquery"),window,document):t(jQuery,window,document)}(function(t,e,n,o){"use strict";if(!e.history.pushState)return t.fn.smoothState=function(){return this},void(t.fn.smoothState.options={});if(!t.fn.smoothState){var r=t("html, body"),a=e.console,i={debug:!1,anchors:"a",hrefRegex:"",forms:"form",allowFormCaching:!1,repeatDelay:500,blacklist:".no-smoothState",prefetch:!1,prefetchOn:"mouseover touchstart",prefetchBlacklist:".no-prefetch",locationHeader:"X-SmoothState-Location",cacheLength:0,loadingClass:"is-loading",scroll:!0,alterRequest:function(t){return t},alterChangeState:function(t,e,n){return t},onBefore:function(t,e){},onStart:{duration:0,render:function(t){}},onProgress:{duration:0,render:function(t){}},onReady:{duration:0,render:function(t,e){t.html(e)}},onAfter:function(t,e){}},s={isExternal:function(t){var n=t.match(/^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/);return"string"==typeof n[1]&&n[1].length>0&&n[1].toLowerCase()!==e.location.protocol?!0:"string"==typeof n[2]&&n[2].length>0&&n[2].replace(new RegExp(":("+{"http:":80,"https:":443}[e.location.protocol]+")?$"),"")!==e.location.host},stripHash:function(t){return t.replace(/#.*/,"")},isHash:function(t,n){n=n||e.location.href;var o=t.indexOf("#")>-1,r=s.stripHash(t)===s.stripHash(n);return o&&r},translate:function(e){var n={dataType:"html",type:"GET"};return e="string"==typeof e?t.extend({},n,{url:e}):t.extend({},n,e)},shouldLoadAnchor:function(t,e,n){var r=t.prop("href");return!(s.isExternal(r)||s.isHash(r)||t.is(e)||t.prop("target")||typeof n!==o&&""!==n&&-1===t.prop("href").search(n))},clearIfOverCapacity:function(t,e){return Object.keys||(Object.keys=function(t){var e,n=[];for(e in t)Object.prototype.hasOwnProperty.call(t,e)&&n.push(e);return n}),Object.keys(t).length>e&&(t={}),t},storePageIn:function(e,n,o,r,a,i){var s=t("<html></html>").append(t(o));return"undefined"==typeof a&&(a={}),"undefined"==typeof i&&(i=n),e[n]={status:"loaded",title:s.find("title").first().text(),html:s.find("#"+r),doc:o,state:a,destUrl:i},e},triggerAllAnimationEndEvent:function(e,n){n=" "+n||"";var o=0,r="animationstart webkitAnimationStart oanimationstart MSAnimationStart",a="animationend webkitAnimationEnd oanimationend MSAnimationEnd",i="allanimationend",l=function(n){t(n.delegateTarget).is(e)&&(n.stopPropagation(),o++)},u=function(n){t(n.delegateTarget).is(e)&&(n.stopPropagation(),o--,0===o&&e.trigger(i))};e.on(r,l),e.on(a,u),e.on("allanimationend"+n,function(){o=0,s.redraw(e)})},redraw:function(t){t.height()}},l=function(n){if(null!==n.state){var o=e.location.href,r=t("#"+n.state.id),a=r.data("smoothState"),i=a.href!==o&&!s.isHash(o,a.href),l=n.state!==a.cache[a.href].state;(i||l)&&(l&&a.clear(a.href),a.load(o,!1))}},u=function(i,l){var u=t(i),c=u.prop("id"),f=null,d=!1,h={},p={},g=e.location.href,m=function(t){t=t||!1,t&&h.hasOwnProperty(t)?delete h[t]:h={},u.data("smoothState").cache=h},y=function(e,n){n=n||t.noop;var o=s.translate(e);if(h=s.clearIfOverCapacity(h,l.cacheLength),!h.hasOwnProperty(o.url)||"undefined"!=typeof o.data){h[o.url]={status:"fetching"};var r=t.ajax(o);r.done(function(t){s.storePageIn(h,o.url,t,c),u.data("smoothState").cache=h}),r.fail(function(){h[o.url].status="error"}),l.locationHeader&&r.always(function(t,e,n){var r=t.statusCode?t:n,a=r.getResponseHeader(l.locationHeader);a&&(h[o.url].destUrl=a)}),n&&r.always(n)}},v=function(){if(f){var e=t(f,u);if(e.length){var n=e.offset().top;r.scrollTop(n)}f=null}},S=function(o){var i="#"+c,s=h[o]?t(h[o].html.html()):null;s.length?(n.title=h[o].title,u.data("smoothState").href=o,l.loadingClass&&r.removeClass(l.loadingClass),l.onReady.render(u,s),u.one("ss.onReadyEnd",function(){d=!1,l.onAfter(u,s),l.scroll&&v(),O(u)}),e.setTimeout(function(){u.trigger("ss.onReadyEnd")},l.onReady.duration)):!s&&l.debug&&a?a.warn("No element with an id of "+i+" in response from "+o+" in "+h):e.location=o},w=function(t,n,o){var i=s.translate(t);"undefined"==typeof n&&(n=!0),"undefined"==typeof o&&(o=!0);var f=!1,d=!1,g={loaded:function(){var t=f?"ss.onProgressEnd":"ss.onStartEnd";if(d&&f?d&&S(i.url):u.one(t,function(){S(i.url),o||m(i.url)}),n){var r=h[i.url].destUrl;p=l.alterChangeState({id:c},h[i.url].title,r),h[i.url].state=p,e.history.pushState(p,h[i.url].title,r)}d&&!o&&m(i.url)},fetching:function(){f||(f=!0,u.one("ss.onStartEnd",function(){l.loadingClass&&r.addClass(l.loadingClass),l.onProgress.render(u),e.setTimeout(function(){u.trigger("ss.onProgressEnd"),d=!0},l.onProgress.duration)})),e.setTimeout(function(){h.hasOwnProperty(i.url)&&g[h[i.url].status]()},10)},error:function(){l.debug&&a?a.log("There was an error loading: "+i.url):e.location=i.url}};h.hasOwnProperty(i.url)||y(i),l.onStart.render(u),e.setTimeout(function(){l.scroll&&r.scrollTop(0),u.trigger("ss.onStartEnd")},l.onStart.duration),g[h[i.url].status]()},E=function(e){var n,o=t(e.currentTarget);s.shouldLoadAnchor(o,l.blacklist,l.hrefRegex)&&!d&&(e.stopPropagation(),n=s.translate(o.prop("href")),n=l.alterRequest(n),y(n))},b=function(e){var n=t(e.currentTarget);if(!e.metaKey&&!e.ctrlKey&&s.shouldLoadAnchor(n,l.blacklist,l.hrefRegex)&&(e.stopPropagation(),e.preventDefault(),!T())){A();var o=s.translate(n.prop("href"));d=!0,f=n.prop("hash"),o=l.alterRequest(o),l.onBefore(n,u),w(o)}},C=function(e){var n=t(e.currentTarget);if(!n.is(l.blacklist)&&(e.preventDefault(),e.stopPropagation(),!T())){A();var r={url:n.prop("action"),data:n.serialize(),type:n.prop("method")};d=!0,r=l.alterRequest(r),"get"===r.type.toLowerCase()&&(r.url=r.url+"?"+r.data),l.onBefore(n,u),w(r,o,l.allowFormCaching)}},P=0,T=function(){var t=null===l.repeatDelay,e=parseInt(Date.now())>P;return!(t||e)},A=function(){P=parseInt(Date.now())+parseInt(l.repeatDelay)},O=function(t){l.anchors&&l.prefetch&&t.find(l.anchors).not(l.prefetchBlacklist).on(l.prefetchOn,null,E)},R=function(t){l.anchors&&(t.on("click",l.anchors,b),O(t)),l.forms&&t.on("submit",l.forms,C)},x=function(){var t=u.prop("class");u.removeClass(t),s.redraw(u),u.addClass(t)};return l=t.extend({},t.fn.smoothState.options,l),null===e.history.state?(p=l.alterChangeState({id:c},n.title,g),e.history.replaceState(p,n.title,g)):p={},s.storePageIn(h,g,n.documentElement.outerHTML,c,p),s.triggerAllAnimationEndEvent(u,"ss.onStartEnd ss.onProgressEnd ss.onEndEnd"),R(u),{href:g,cache:h,clear:m,load:w,fetch:y,restartCSSAnimations:x}},c=function(e){return this.each(function(){var n=this.tagName.toLowerCase();this.id&&"body"!==n&&"html"!==n&&!t.data(this,"smoothState")?t.data(this,"smoothState",new u(this,e)):!this.id&&a?a.warn("Every smoothState container needs an id but the following one does not have one:",this):"body"!==n&&"html"!==n||!a||a.warn("The smoothstate container cannot be the "+this.tagName+" tag")})};e.onpopstate=l,t.smoothStateUtility=s,t.fn.smoothState=c,t.fn.smoothState.options=i}});
 
 //-------------------------------------------------------
+/*! matchMedia() polyfill - Test a CSS media type/query in JS. Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. Dual MIT/BSD license */
+
+window.matchMedia || (window.matchMedia = function() {
+    "use strict";
+
+    // For browsers that support matchMedium api such as IE 9 and webkit
+    var styleMedia = (window.styleMedia || window.media);
+
+    // For those that don't support matchMedium
+    if (!styleMedia) {
+        var style       = document.createElement('style'),
+            script      = document.getElementsByTagName('script')[0],
+            info        = null;
+
+        style.type  = 'text/css';
+        style.id    = 'matchmediajs-test';
+
+        script.parentNode.insertBefore(style, script);
+
+        // 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
+        info = ('getComputedStyle' in window) && window.getComputedStyle(style, null) || style.currentStyle;
+
+        styleMedia = {
+            matchMedium: function(media) {
+                var text = '@media ' + media + '{ #matchmediajs-test { width: 1px; } }';
+
+                // 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers
+                if (style.styleSheet) {
+                    style.styleSheet.cssText = text;
+                } else {
+                    style.textContent = text;
+                }
+
+                // Test if media query is true or false
+                return info.width === '1px';
+            }
+        };
+    }
+
+    return function(media) {
+        return {
+            matches: styleMedia.matchMedium(media || 'all'),
+            media: media || 'all'
+        };
+    };
+}());
+
+
+//-------------------------------------------------------
+/*! matchMedia() polyfill addListener/removeListener extension. Author & copyright (c) 2012: Scott Jehl. Dual MIT/BSD license */
+(function(){
+    // Bail out for browsers that have addListener support
+    if (window.matchMedia && window.matchMedia('all').addListener) {
+        return false;
+    }
+
+    var localMatchMedia = window.matchMedia,
+        hasMediaQueries = localMatchMedia('only all').matches,
+        isListening     = false,
+        timeoutID       = 0,    // setTimeout for debouncing 'handleChange'
+        queries         = [],   // Contains each 'mql' and associated 'listeners' if 'addListener' is used
+        handleChange    = function(evt) {
+            // Debounce
+            clearTimeout(timeoutID);
+
+            timeoutID = setTimeout(function() {
+                for (var i = 0, il = queries.length; i < il; i++) {
+                    var mql         = queries[i].mql,
+                        listeners   = queries[i].listeners || [],
+                        matches     = localMatchMedia(mql.media).matches;
+
+                    // Update mql.matches value and call listeners
+                    // Fire listeners only if transitioning to or from matched state
+                    if (matches !== mql.matches) {
+                        mql.matches = matches;
+
+                        for (var j = 0, jl = listeners.length; j < jl; j++) {
+                            listeners[j].call(window, mql);
+                        }
+                    }
+                }
+            }, 30);
+        };
+
+    window.matchMedia = function(media) {
+        var mql         = localMatchMedia(media),
+            listeners   = [],
+            index       = 0;
+
+        mql.addListener = function(listener) {
+            // Changes would not occur to css media type so return now (Affects IE <= 8)
+            if (!hasMediaQueries) {
+                return;
+            }
+
+            // Set up 'resize' listener for browsers that support CSS3 media queries (Not for IE <= 8)
+            // There should only ever be 1 resize listener running for performance
+            if (!isListening) {
+                isListening = true;
+                window.addEventListener('resize', handleChange, true);
+            }
+
+            // Push object only if it has not been pushed already
+            if (index === 0) {
+                index = queries.push({
+                    mql         : mql,
+                    listeners   : listeners
+                });
+            }
+
+            listeners.push(listener);
+        };
+
+        mql.removeListener = function(listener) {
+            for (var i = 0, il = listeners.length; i < il; i++){
+                if (listeners[i] === listener){
+                    listeners.splice(i, 1);
+                }
+            }
+        };
+
+        return mql;
+    };
+}());
+
+
+//-------------------------------------------------------
 /*!  - v - 2015-06-08 */!function(ELEMENT){ELEMENT.matches=ELEMENT.matches||ELEMENT.mozMatchesSelector||ELEMENT.msMatchesSelector||ELEMENT.oMatchesSelector||ELEMENT.webkitMatchesSelector||function(selector){for(var element=this,elements=(element.document||element.ownerDocument).querySelectorAll(selector),index=0;elements[index]&&elements[index]!==element;)++index;return elements[index]?!0:!1},ELEMENT.closest=ELEMENT.closest||function(selector){for(var element=this;element&&!element.matches(selector);)element=element.parentElement;return element}}(Element.prototype),function(){if("function"!=typeof window.getMatchedCSSRules){var ELEMENT_RE=/[\w-]+/g,ID_RE=/#[\w-]+/g,CLASS_RE=/\.[\w-]+/g,ATTR_RE=/\[[^\]]+\]/g,PSEUDO_CLASSES_RE=/\:(?!not)[\w-]+(\(.*\))?/g,PSEUDO_ELEMENTS_RE=/\:\:?(after|before|first-letter|first-line|selection)/g,toArray=function(list){for(var items=[],i=0,listLength=list.length;listLength>i;i++)items.push(list[i]);return items},getCSSHost=function(href){var fakeLinkOfSheet=document.createElement("a");return fakeLinkOfSheet.href=href,fakeLinkOfSheet.host},getSheetRules=function(stylesheet){var sheetHost,sheetMedia=stylesheet.media&&stylesheet.media.mediaText;if("true"==objectFit.disableCrossDomain&&(sheetHost=getCSSHost(stylesheet.href),sheetHost!==window.location.host))return[];if(stylesheet.disabled)return[];if(window.matchMedia){if(sheetMedia&&sheetMedia.length&&!window.matchMedia(sheetMedia).matches)return[]}else if(sheetMedia&&sheetMedia.length)return[];return toArray(stylesheet.cssRules)},_find=function(string,re){string.match(re);return re?re.length:0},calculateScore=function(selector){for(var part,match,score=[0,0,0],parts=selector.split(" ");part=parts.shift(),"string"==typeof part;)match=_find(part,PSEUDO_ELEMENTS_RE),score[2]=match,match&&(part=part.replace(PSEUDO_ELEMENTS_RE,"")),match=_find(part,PSEUDO_CLASSES_RE),score[1]=match,match&&(part=part.replace(PSEUDO_CLASSES_RE,"")),match=_find(part,ATTR_RE),score[1]+=match,match&&(part=part.replace(ATTR_RE,"")),match=_find(part,ID_RE),score[0]=match,match&&(part=part.replace(ID_RE,"")),match=_find(part,CLASS_RE),score[1]+=match,match&&(part=part.replace(CLASS_RE,"")),score[2]+=_find(part,ELEMENT_RE);return parseInt(score.join(""),10)},getSpecificityScore=function(element,selectorText){for(var selector,score,selectors=selectorText.split(","),result=0;selector=selectors.shift();)element.closest(selector)&&(score=calculateScore(selector),result=score>result?score:result);return result},sortBySpecificity=function(element,rules){var compareSpecificity=function(a,b){return getSpecificityScore(element,b.selectorText)-getSpecificityScore(element,a.selectorText)};return rules.sort(compareSpecificity)};window.getMatchedCSSRules=function(element){var styleSheets,sheet,rules,rule,result=[];for(styleSheets=toArray(window.document.styleSheets);sheet=styleSheets.shift();)for(rules=getSheetRules(sheet);rule=rules.shift();)rule.styleSheet?rules=getSheetRules(rule.styleSheet).concat(rules):rule.media?rules=getSheetRules(rule).concat(rules):element.closest(rule.selectorText)&&result.push(rule);return sortBySpecificity(element,result)}}}(),function(window){for(var lastTime=0,vendors=["webkit","moz"],requestAnimationFrame=window.requestAnimationFrame,cancelAnimationFrame=window.cancelAnimationFrame,i=vendors.length;--i>=0&&!requestAnimationFrame;)requestAnimationFrame=window[vendors[i]+"RequestAnimationFrame"],cancelAnimationFrame=window[vendors[i]+"CancelAnimationFrame"];requestAnimationFrame&&cancelAnimationFrame||(requestAnimationFrame=function(callback){var now=+new Date,nextTime=Math.max(lastTime+16,now);return setTimeout(function(){callback(lastTime=nextTime)},nextTime-now)},cancelAnimationFrame=clearTimeout),window.requestAnimationFrame=requestAnimationFrame,window.cancelAnimationFrame=cancelAnimationFrame}(window),function(global){"use strict";var objectFit={};objectFit._debug=!1,objectFit.observer=null,objectFit.disableCrossDomain="false",objectFit.getComputedStyle=function(element,context){return context=context||window,context.getComputedStyle?context.getComputedStyle(element,null):element.currentStyle},objectFit.getDefaultComputedStyle=function(element){var newelement=element.cloneNode(!0),styles={},iframe=document.createElement("iframe");document.body.appendChild(iframe),iframe.contentWindow.document.open(),iframe.contentWindow.document.write("<body></body>"),iframe.contentWindow.document.body.appendChild(newelement),iframe.contentWindow.document.close();var value,property,defaultElement=iframe.contentWindow.document.querySelectorAll(element.nodeName.toLowerCase())[0],defaultComputedStyle=this.getComputedStyle(defaultElement,iframe.contentWindow);for(property in defaultComputedStyle)if(value=defaultComputedStyle.getPropertyValue===!0?defaultComputedStyle.getPropertyValue(property):defaultComputedStyle[property],null!==value)switch(property){default:styles[property]=value;break;case"width":case"height":case"minWidth":case"minHeight":case"maxWidth":case"maxHeight":}return document.body.removeChild(iframe),styles},objectFit.getMatchedStyle=function(element,property){var val=null,inlineval=null;element.style.getPropertyValue?inlineval=element.style.getPropertyValue(property):element.currentStyle&&(inlineval=element.currentStyle[property]);var r,important,rules=window.getMatchedCSSRules(element),i=rules.length;if(i)for(;i-->0&&(r=rules[i],important=r.style.getPropertyPriority(property),null!==val&&!important||(val=r.style.getPropertyValue(property),!important)););return val||null===inlineval||(val=inlineval),val},objectFit.orientation=function(replacedElement){if(replacedElement.parentNode&&"x-object-fit"===replacedElement.parentNode.nodeName.toLowerCase()){var width=replacedElement.naturalWidth||replacedElement.clientWidth,height=replacedElement.naturalHeight||replacedElement.clientHeight,parentWidth=replacedElement.parentNode.clientWidth,parentHeight=replacedElement.parentNode.clientHeight;!height||width/height>parentWidth/parentHeight?"wider"!==replacedElement.getAttribute("data-x-object-relation")&&(replacedElement.setAttribute("data-x-object-relation","wider"),replacedElement.className="x-object-fit-wider",this._debug&&window.console&&console.log("x-object-fit-wider")):"taller"!==replacedElement.getAttribute("data-x-object-relation")&&(replacedElement.setAttribute("data-x-object-relation","taller"),replacedElement.className="x-object-fit-taller",this._debug&&window.console&&console.log("x-object-fit-taller"))}},objectFit.process=function(args){if(args.selector&&args.replacedElements){switch(objectFit.disableCrossDomain=args.disableCrossDomain||"false",args.fittype=args.fittype||"none",args.fittype){default:return;case"none":case"fill":case"contain":case"cover":}var replacedElements=args.replacedElements;if(replacedElements.length)for(var i=0,replacedElementsLength=replacedElements.length;replacedElementsLength>i;i++)this.processElement(replacedElements[i],args)}},objectFit.processElement=function(replacedElement,args){var property,value,replacedElementStyles=objectFit.getComputedStyle(replacedElement),replacedElementDefaultStyles=objectFit.getDefaultComputedStyle(replacedElement),wrapperElement=document.createElement("x-object-fit");objectFit._debug&&window.console&&console.log("Applying to WRAPPER-------------------------------------------------------");for(property in replacedElementStyles)switch(property){default:value=objectFit.getMatchedStyle(replacedElement,property),null!==value&&""!==value&&(objectFit._debug&&window.console&&console.log(property+": "+value),wrapperElement.style[property]=value);break;case"length":case"parentRule":}objectFit._debug&&window.console&&console.log("Applying to REPLACED ELEMENT-------------------------------------------------------");for(property in replacedElementDefaultStyles)switch(property){default:value=replacedElementDefaultStyles[property],objectFit._debug&&window.console&&""!==value&&(console.log(property+": "+value),void 0===replacedElement.style[property]&&console.log("Indexed style properties (`"+property+"`) not supported in: "+window.navigator.userAgent)),replacedElement.style[property]?replacedElement.style[property]=value:replacedElement.style.property=value;break;case"length":case"parentRule":}wrapperElement.setAttribute("class","x-object-fit-"+args.fittype),replacedElement.parentNode.insertBefore(wrapperElement,replacedElement),wrapperElement.appendChild(replacedElement),objectFit.orientation(replacedElement);var resizeTimer=null,resizeAction=function(){null!==resizeTimer&&window.cancelAnimationFrame(resizeTimer),resizeTimer=window.requestAnimationFrame(function(){objectFit.orientation(replacedElement)})};switch(args.fittype){default:break;case"contain":case"cover":window.addEventListener?(replacedElement.addEventListener("load",resizeAction,!1),window.addEventListener("resize",resizeAction,!1),window.addEventListener("orientationchange",resizeAction,!1)):(replacedElement.attachEvent("onload",resizeAction),window.attachEvent("onresize",resizeAction))}},objectFit.listen=function(args){var domInsertedAction=function(element){for(var i=0,argsLength=args.length;argsLength>i;i++)(element.mozMatchesSelector&&element.mozMatchesSelector(args[i].selector)||element.msMatchesSelector&&element.msMatchesSelector(args[i].selector)||element.oMatchesSelector&&element.oMatchesSelector(args[i].selector)||element.webkitMatchesSelector&&element.webkitMatchesSelector(args[i].selector))&&(args[i].replacedElements=[element],objectFit.process(args[i]),objectFit._debug&&window.console&&console.log("Matching node inserted: "+element.nodeName))},domInsertedObserverFunction=function(element){objectFit.observer.disconnect(),domInsertedAction(element),objectFit.observer.observe(document.documentElement,{childList:!0,subtree:!0})},domInsertedEventFunction=function(event){window.removeEventListener("DOMNodeInserted",domInsertedEventFunction,!1),domInsertedAction(event.target),window.addEventListener("DOMNodeInserted",domInsertedEventFunction,!1)},domRemovedAction=function(element){"x-object-fit"===element.nodeName.toLowerCase()&&(element.parentNode.removeChild(element),objectFit._debug&&window.console&&console.log("Matching node removed: "+element.nodeName))},domRemovedObserverFunction=function(element){objectFit.observer.disconnect(),domRemovedAction(element),objectFit.observer.observe(document.documentElement,{childList:!0,subtree:!0})},domRemovedEventFunction=function(event){window.removeEventListener("DOMNodeRemoved",domRemovedEventFunction,!1),domRemovedAction(event.target.parentNode),window.addEventListener("DOMNodeRemoved",domRemovedEventFunction,!1)};window.MutationObserver?(objectFit._debug&&window.console&&console.log("DOM MutationObserver"),this.observer=new MutationObserver(function(mutations){mutations.forEach(function(mutation){if(mutation.addedNodes&&mutation.addedNodes.length)for(var nodes=mutation.addedNodes,i=0,nodesLength=nodes.length;nodesLength>i;i++)domInsertedObserverFunction(nodes[i]);mutation.removedNodes&&mutation.removedNodes.length&&domRemovedObserverFunction(mutation.target)})}),this.observer.observe(document.documentElement,{childList:!0,subtree:!0})):window.addEventListener&&(objectFit._debug&&window.console&&console.log("DOM Mutation Events"),window.addEventListener("DOMNodeInserted",domInsertedEventFunction,!1),window.addEventListener("DOMNodeRemoved",domRemovedEventFunction,!1))},objectFit.init=function(args){if(args){args instanceof Array||(args=[args]);for(var i=0,argsLength=args.length;argsLength>i;i++)args[i].replacedElements=document.querySelectorAll(args[i].selector),this.process(args[i]);this.listen(args)}},objectFit.polyfill=function(args){"objectFit"in document.documentElement.style==!1?(objectFit._debug&&window.console&&console.log("object-fit not natively supported"),"complete"===document.readyState?objectFit.init(args):window.addEventListener?window.addEventListener("load",function(){objectFit.init(args)},!1):window.attachEvent("onload",function(){objectFit.init(args)})):objectFit._debug&&window.console&&console.log("object-fit natively supported")},"object"==typeof module&&module&&"object"==typeof module.exports?module.exports=objectFit:"function"==typeof define&&define.amd?define([],function(){return objectFit}):"object"==typeof global&&"object"==typeof global.document&&(global.objectFit=objectFit)}(window);
 
 //-------------------------------------------------------
@@ -191,7 +318,12 @@ if(D.call(this,c,d),this.render=G.prototype.render,null==b)throw"Cannot tween a 
 //-------------------------------------------------------
 (function($){
 
-var shrinkHeader = 100;
+var shrinkHeader = 100,
+    screenXS = "screen and (min-width:480px)",
+    screenSM = "screen and (min-width:768px)",
+    screenMD = "screen and (min-width:992px)",
+    screenLG = "screen and (min-width:1200px)";
+
 
 $(window).scroll(function() {
     var scroll = getCurrentScroll();
@@ -214,7 +346,28 @@ $.fn.setAllToMaxHeight = function(){
   return this.height( Math.max.apply(this, $.map( this , function(e){ return $(e).height() }) ) );
 }
 
+var smq = window.matchMedia(screenSM);
+smq.addListener(equalHeights);
+
 $(".equalheights").setAllToMaxHeight();
+function equalHeights(mediaQuery) {
+  if (mediaQuery.matches) {
+    $(".equalheights").css("height", "").setAllToMaxHeight();
+  } else {
+    $(".equalheights").css("height", "");
+  }
+}
+
+// enquire.register(screenSM, {
+//     match: function(){
+//       $(".equalheights").setAllToMaxHeight();
+//     },
+//     unmatch: function() {
+//       $(".equalheights").css("height", "");
+//     }
+// }, true);
+
+
 
 objectFit.polyfill({
     selector: 'img', // this can be any CSS selector

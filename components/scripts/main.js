@@ -1,6 +1,11 @@
 (function($){
 
-var shrinkHeader = 100;
+var shrinkHeader = 100,
+    screenXS = "screen and (min-width:480px)",
+    screenSM = "screen and (min-width:768px)",
+    screenMD = "screen and (min-width:992px)",
+    screenLG = "screen and (min-width:1200px)";
+
 
 $(window).scroll(function() {
     var scroll = getCurrentScroll();
@@ -23,7 +28,28 @@ $.fn.setAllToMaxHeight = function(){
   return this.height( Math.max.apply(this, $.map( this , function(e){ return $(e).height() }) ) );
 }
 
+var smq = window.matchMedia(screenSM);
+smq.addListener(equalHeights);
+
 $(".equalheights").setAllToMaxHeight();
+function equalHeights(mediaQuery) {
+  if (mediaQuery.matches) {
+    $(".equalheights").css("height", "").setAllToMaxHeight();
+  } else {
+    $(".equalheights").css("height", "");
+  }
+}
+
+// enquire.register(screenSM, {
+//     match: function(){
+//       $(".equalheights").setAllToMaxHeight();
+//     },
+//     unmatch: function() {
+//       $(".equalheights").css("height", "");
+//     }
+// }, true);
+
+
 
 objectFit.polyfill({
     selector: 'img', // this can be any CSS selector

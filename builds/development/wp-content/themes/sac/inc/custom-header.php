@@ -8,7 +8,7 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package Set_Aside_Centeral
+ * @package Set_Aside_Central
  */
 
 /**

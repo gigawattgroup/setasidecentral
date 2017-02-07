@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.com/
  *
- * @package Set_Aside_Centeral
+ * @package Set_Aside_Central
  */
 
 /**

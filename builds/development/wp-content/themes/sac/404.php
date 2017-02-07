@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package Set_Aside_Centeral
+ * @package Set_Aside_Central
  */
 
 get_header(); ?>

@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Set_Aside_Centeral
+ * @package Set_Aside_Central
  */
 
 ?>
@@ -15,7 +15,7 @@
 			<div class="slide-border">
 				<div class="slide-header"><i class="fa fa-star" aria-hidden="true"></i></div>
 				<h2>Federal Agencies missed $4.1 Billion in contract opportunies intended for HUBZone small business</h2>
-				<p>That's $4.1 billion in jobs and growth denied to HUBZone families and small businesses all ascross America in areas that need help the most.<p>
+				<p>That's $4.1 billion in jobs and growth denied to HUBZone families and small businesses all ascross America in areas that need help the most.</p>
 				<hr>
 				<p>HELP US UNLEASH AMERICA'S JOB CREATORS</p>
 				<button class="btn-blue">SIGN THE PETITION</button>
@@ -27,7 +27,7 @@
 			<div class="slide-border">
 				<div class="slide-header"><i class="fa fa-star" aria-hidden="true"></i></div>
 				<h2>Federal Agencies missed $4.1 Billion in contract opportunies intended for HUBZone small business</h2>
-				<p>That's $4.1 billion in jobs and growth denied to HUBZone families and small businesses all ascross America in areas that need help the most.<p>
+				<p>That's $4.1 billion in jobs and growth denied to HUBZone families and small businesses all ascross America in areas that need help the most.</p>
 				<hr>
 				<p>HELP US UNLEASH AMERICA'S JOB CREATORS</p>
 				<button class="btn-blue">SIGN THE PETITION</button>
@@ -52,17 +52,20 @@
   </video>
 	<div class="overlay"></div>
 	<div class="container">
-		<h2 class="entry-title"><span class="new-line">more than <span class="text-large">5,000</span> Hubzone Certified Contractors Nationwide</span> <span class="new-line">employing over <span class="text-large">75,000</span> people</span></h2>
+		<h2 class="entry-title"><span class="new-line">more than <span id="hubzone-contractors" class="text-large">5,000</span> Hubzone Certified Contractors Nationwide</span> <span class="new-line">employing over <span id="hubzone-employed" class="text-large">75,000</span> people</span></h2>
 		<div class="entry-map"><img src="http://setaside.dev/wp-content/themes/sac/images/map.png" alt="HUBZones Map"></div>
-		<div id="section-map-content" class="entry-content">
-				<h2><span class="new-line text-large">TOP 5</span> HUBZone Industries</h2>
-				<ol>
-				<li>Commercial Construction</li>
-				<li>Civil Engineering</li>
-				<li>Computer related services</li>
-				<li>Road Construction</li>
-				<li>Facilities Support</li>
-				</ol>
+		<div id="section-map-content" class="entry-container">
+				<div class="bcg"></div>
+				<div class="entry-content">
+					<h2><span class="new-line text-large">TOP 5</span> HUBZone Industries</h2>
+					<ol>
+					<li>Commercial Construction</li>
+					<li>Civil Engineering</li>
+					<li>Computer related services</li>
+					<li>Road Construction</li>
+					<li>Facilities Support</li>
+					</ol>
+				</div>
 		</div>
 	</div>
 </div><!-- .section-map -->
@@ -75,7 +78,9 @@
 	businesses in vulnerable communities gain access to federal procurement opportunities.</p>
 		</div>
 	</div>
-	<div class="entry-image equalheights" style="background-image:url('http://setaside.dev/wp-content/themes/sac/images/hubzones.jpg')"></div>
+	<div class="entry-image equalheights">
+		<div class="bcg" style="background-image:url('http://setaside.dev/wp-content/themes/sac/images/hubzones.jpg')"></div>
+	</div>
 </div><!-- .section-hubzones -->
 
 <div class="section-more">

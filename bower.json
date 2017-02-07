@@ -24,6 +24,9 @@
     "object-fit": "^0.4.2",
     "scrollmagic": "^2.0.5",
     "gsap": "^1.19.1",
-    "jquery-animateNumber": "^0.0.14"
+    "jquery-animateNumber": "^0.0.14",
+    "breakpoint-sass": "^2.7.1",
+    "font-awesome": "^4.7.0",
+    "matchMedia": "^0.3.0"
   }
 }
