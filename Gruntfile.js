@@ -24,6 +24,8 @@ module.exports = function(grunt) {
 					'<%= paths.src.js %>inc/navigation.js',
 					'<%= paths.src.js %>inc/skip-link-focus-fix.js',
 					'<%= paths.src.js %>inc/jquery.smoothState.min.js',
+					'bower_components/matchMedia/matchMedia.js',
+					'bower_components/matchMedia/matchMedia.addListener.js',
 					'bower_components/object-fit/dist/polyfill.object-fit.min.js',
 					'bower_components/gsap/src/minified/TweenMax.min.js',
 					'bower_components/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
@@ -40,6 +42,12 @@ module.exports = function(grunt) {
 					'<%= paths.src.js %>home.js'
 				],
 				dest: '<%= paths.dest.js %>sac.home.js'
+			},
+			about: {
+				src: [
+					'<%= paths.src.js %>about.js'
+				],
+				dest: '<%= paths.dest.js %>sac.about.js'
 			}
 		}, // concat
 
@@ -60,6 +68,15 @@ module.exports = function(grunt) {
 	      },
         files: {
           '<%= paths.dest.js %>sac.home.min.js': ['<%= paths.dest.js %>sac.home.js']
+        }
+      },
+      about: {
+				options: {
+	        // the banner is inserted at the top of the output
+	        banner: '/*! <%= pkg.name %> - About Page Scripts - v<%= pkg.version %> <%= grunt.template.today("mm/dd/yyyy") %> */\n'
+	      },
+        files: {
+          '<%= paths.dest.js %>sac.about.min.js': ['<%= paths.dest.js %>sac.about.js']
         }
       }
     },

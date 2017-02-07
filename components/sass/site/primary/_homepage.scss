@@ -145,7 +145,7 @@
 
 
     & > .container {
-      padding: 100px 15px;
+      padding: 3em 15px 4em;
       @include clearfix;
       @include clearfix-after;
     }
@@ -184,7 +184,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 0;
+        width: 0px;
         height: 100%;
         transition: all 1s;
         transition-delay: 1s;
@@ -339,10 +339,11 @@
       width: 100%;
       float: left;
       margin: 0;
-      padding: 5em 3em 5em .5em;
+      padding: 0;
 
       @include breakpoint($screen-sm) {
         width: 50%;
+        padding: 5em 3em 5em .5em;
       }
     }
   }
@@ -395,6 +396,15 @@
       }
     }
 
+  }
+
+  #hubzone-contractors {
+    width: 151px;
+    display: inline-block;
+  }
+  #hubzone-employed {
+    width: 176px;
+    display: inline-block;
   }
 
 } //.page-template-homepage

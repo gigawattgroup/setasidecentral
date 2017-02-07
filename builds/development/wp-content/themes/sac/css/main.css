@@ -4349,7 +4349,7 @@ a:hover, a:active {
 }
 
 .page-template-homepage .section-map > .container, .page-template-homepage .blog .section-map > .site-content, .blog .page-template-homepage .section-map > .site-content, .page-template-homepage .section-carousel .section-map > .slide-caption {
-  padding: 100px 15px;
+  padding: 3em 15px 4em;
   content: "";
   display: table;
   table-layout: fixed;
@@ -4397,7 +4397,7 @@ a:hover, a:active {
   position: absolute;
   top: 0;
   left: 0;
-  width: 0;
+  width: 0px;
   height: 100%;
   -webkit-transition: all 1s;
      -moz-transition: all 1s;
@@ -4580,12 +4580,13 @@ a:hover, a:active {
   width: 100%;
   float: left;
   margin: 0;
-  padding: 5em 3em 5em .5em;
+  padding: 0;
 }
 
 @media (min-width: 768px) {
   .page-template-homepage .section-hubzones .entry-content {
     width: 50%;
+    padding: 5em 3em 5em .5em;
   }
 }
 
@@ -4643,6 +4644,16 @@ a:hover, a:active {
   margin: 0 auto;
   text-align: center;
   color: #fff;
+}
+
+.page-template-homepage #hubzone-contractors {
+  width: 151px;
+  display: inline-block;
+}
+
+.page-template-homepage #hubzone-employed {
+  width: 176px;
+  display: inline-block;
 }
 
 /*--------------------------------------------------------------

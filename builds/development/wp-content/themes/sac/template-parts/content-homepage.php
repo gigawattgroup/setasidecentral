@@ -52,7 +52,7 @@
   </video>
 	<div class="overlay"></div>
 	<div class="container">
-		<h2 class="entry-title"><span class="new-line">more than <span class="text-large">5,000</span> Hubzone Certified Contractors Nationwide</span> <span class="new-line">employing over <span class="text-large">75,000</span> people</span></h2>
+		<h2 class="entry-title"><span class="new-line">more than <span id="hubzone-contractors" class="text-large">5,000</span> Hubzone Certified Contractors Nationwide</span> <span class="new-line">employing over <span id="hubzone-employed" class="text-large">75,000</span> people</span></h2>
 		<div class="entry-map"><img src="http://setaside.dev/wp-content/themes/sac/images/map.png" alt="HUBZones Map"></div>
 		<div id="section-map-content" class="entry-container">
 				<div class="bcg"></div>

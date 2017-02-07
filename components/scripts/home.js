@@ -17,7 +17,7 @@ var controller = new ScrollMagic.Controller();
 var parallax01Tl = new TimelineMax();
 parallax01Tl
   .from('#section-about-content', 0.4, {autoAlpha: 0, y: '100px', ease:Power0.easeNone}, 0.6)
-  .from('.bcg', 2, {y: '-75%', ease:Power0.easeNone}, 0)
+  .from($('.section-about .bcg'), 2, {y: '-75%', ease:Power0.easeNone}, 0)
   ;
 
 var parallaxScene01 = new ScrollMagic.Scene({
@@ -32,26 +32,54 @@ var parallaxScene01 = new ScrollMagic.Scene({
 
 
 // #section-map
-// var parallax02Tl = new TimelineMax();
-// parallax02Tl
-//   .from('#section-about-content', 1, {width: 0, ease:Power0.easeNone});
+var parallax02Tl = new TimelineMax();
+parallax02Tl
+.from($('.section-map .entry-title'), 0.4, {autoAlpha: 0, y: '100px', ease:Power0.easeNone}, 0.6)
+;
 
+var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',');
 var scene02 = new ScrollMagic.Scene({
   triggerElement: '.section-map'
 })
+.setTween(parallax02Tl)
 .setClassToggle('#section-map-content', 'slide-right')
-.addIndicators({
-  name: 'section-map',
-  colorTrigger: 'yellow',
-  colorStart: 'red',
-  colorEnd: 'green'
-})
 .addTo(controller);
 
-console.log("test!");
+var scene03 = new ScrollMagic.Scene({
+  triggerElement: '.section-hubzones'
+})
+.setTween(TweenMax.from($('.section-hubzones .entry-content'), 0.4, {autoAlpha: 0, y: '100px', ease:Power0.easeNone}, 0.6))
+.addTo(controller);
+
 
 
  })(jQuery);
+
+
+ // .on('start', function () {
+ //     $('#hubzone-contractors, #hubzone-employed').html("0");
+ //
+ //     $('#hubzone-contractors').animateNumber(
+ //       {
+ //         number: 5000,
+ //         numberStep: comma_separator_number_step
+ //       },
+ //       1500
+ //     );
+ //
+ //     setTimeout(function() {
+ //
+ //       $('#hubzone-employed').animateNumber(
+ //         {
+ //           number: 75000,
+ //           numberStep: comma_separator_number_step
+ //         },
+ //         1500
+ //       );
+ //
+ //     }, 1500);
+ //
+ // })
 
 // .addIndicators({
 //   name: 'parallax-fadein',
