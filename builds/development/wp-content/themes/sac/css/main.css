@@ -4818,6 +4818,7 @@ a:hover, a:active {
   position: relative;
   float: left;
   width: 100%;
+  overflow: hidden;
 }
 
 .page-template-about .section-who::before {
@@ -4845,6 +4846,10 @@ a:hover, a:active {
   opacity: 1;
 }
 
+.page-template-about .section-who .bcg {
+  height: 140%;
+}
+
 .page-template-about .section-who .entry-content {
   width: 100%;
 }
@@ -4867,8 +4872,6 @@ a:hover, a:active {
        -o-background-size: cover;
           background-size: cover;
   text-align: center;
-  font-size: 24px;
-  font-size: 1.5rem;
 }
 
 .page-template-about .section-why::before {
@@ -4941,6 +4944,13 @@ a:hover, a:active {
 }
 
 .page-template-about .section-why .entry-content {
+  background-color: #fff;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  margin: 0;
+}
+
+.page-template-about .section-why .container-border {
   position: relative;
   background-color: #fff;
   border: 2px solid rgba(0, 0, 0, 0.1);
@@ -4949,22 +4959,6 @@ a:hover, a:active {
   display: table;
   table-layout: fixed;
   clear: both;
-}
-
-.page-template-about .section-why .entry-content::before {
-  content: '';
-  position: absolute;
-  display: block;
-  background-color: #fff;
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  width: -webkit-calc(100% + 2em);
-  width: -moz-calc(100% + 2em);
-  width: calc(100% + 2em);
-  left: -1em;
-  top: -1em;
-  bottom: -1em;
-  left: -1em;
-  z-index: -1;
 }
 
 /*--------------------------------------------------------------

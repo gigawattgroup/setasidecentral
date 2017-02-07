@@ -33,6 +33,11 @@
 
   .section-who {
     @include section(100px);
+    overflow: hidden;
+
+    .bcg {
+      height: 140%;
+    }
 
 
     .entry-content {
@@ -50,7 +55,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
-    @include font-size(1.5);
     @include breakpoint($screen-sm) { min-height: 700px; }
 
     h2::before {
@@ -86,28 +90,23 @@
     }
 
     .entry-content {
+      background-color: $color__light;
+      border: 2px solid rgba($color__dark, .1);
+      padding: 1em;
+      margin: 0;
+    } //.entry-content
+
+    .container-border {
       position: relative;
       background-color: $color__light;
       border: 2px solid rgba($color__dark, .1);
       padding: 1em;
+
       @include clearfix;
       @include clearfix-after;
 
-      &::before {
-        content: '';
-        position: absolute;
-        display: block;
-        background-color: $color__light;
-        border: 2px solid rgba($color__dark, .1);
-        width: calc(100% + 2em);
-        left: -1em;
-        top: -1em;
-        bottom: -1em;
-        left: -1em;
-        z-index: -1;
-      }
+    } //.container-border
 
-    } //.entry-content
 
 
   } //.section-why

@@ -20,7 +20,7 @@
 <?php locate_template( 'page-nav.php', true ) ?>
 
 
-<div class="section-who">
+<div id="who-we-are" class="section-who">
 	<div class="bcg" style="background-image:url('http://setaside.dev/wp-content/themes/sac/images/stock/people-working.png')"></div>
 	<div class="container">
 			<div class="entry-content">
@@ -33,15 +33,17 @@
 
 
 
-<div class="section-why" style="background-image:url('http://setaside.dev/wp-content/themes/sac/images/stock/flag-static.png')">
+<div id="why-us" class="section-why" style="background-image:url('http://setaside.dev/wp-content/themes/sac/images/stock/flag-static.png')">
 	<video class="video-bg" autoplay loop="true" width="960" height="540">
     <source type="video/mp4" src="http://setaside.dev/wp-content/themes/sac/images/stock/flag.mp4">
   </video>
 	<div class="overlay"></div>
 	<div class="container">
 		<h2 class="entry-title">Why Us?</h2>
-		<div class="entry-content">
-			<p>We know what it means to be a small business trying to land government contracts within a HUBZone, because we have already done so. We know what to takes to succeed in what is a highly lucrative and competitive market. We know how landing even a small contract can make a huge difference, opening the door to even bigger opportunities in the future, and we are committed to helping our customers achieve success.</p>
+		<div class="container-border">
+			<div class="entry-content">
+				<p>We know what it means to be a small business trying to land government contracts within a HUBZone, because we have already done so. We know what to takes to succeed in what is a highly lucrative and competitive market. We know how landing even a small contract can make a huge difference, opening the door to even bigger opportunities in the future, and we are committed to helping our customers achieve success.</p>
+			</div>
 		</div>
 	</div><!-- .container -->
 </div><!-- .section-why -->
