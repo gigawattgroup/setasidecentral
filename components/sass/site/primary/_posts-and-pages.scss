@@ -26,3 +26,45 @@
 	clear: both;
 	margin: 0 0 1.5em;
 }
+
+.section-featured {
+	@include section(150px);
+	color: $color__light;
+	text-align: center;
+
+	@include font-size(1.125);
+
+	h1 {
+		@include font-size(4.125);
+		margin: 0.2em 0;
+		position: relative;
+
+		&::before {
+			content: '';
+			border: 2px solid $color__light;
+			width: 145px;
+			position: absolute;
+			display: block;
+			top: 0;
+			left: 50%;
+			transform: translateX(-72px);
+		}
+	}
+
+
+} //.section-featured
+
+.page-navigation {
+	position: relative;
+	float: left;
+	width: 100%;
+	background-color: $color__red;
+
+  @include breakpoint($screen-sm) {
+		text-align: center;
+	}
+
+	& > .container {
+		padding: 35px 15px;
+	}
+} //.page-navigation

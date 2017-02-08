@@ -46,6 +46,8 @@ function sac_setup() {
 	register_nav_menus( array(
 		'header' => esc_html__( 'Primary', 'sac' ),
 		'footer' => esc_html__( 'Footer', 'sac' ),
+		'about' => esc_html__( 'About', 'sac' ),
+		'learn' => esc_html__( 'Learn', 'sac' ),
 	) );
 
 	/*
@@ -131,7 +133,9 @@ function sac_scripts() {
 	if ( is_page_template( array('template-pages/homepage.php') ) ) { // load owl.carousle on these pages only
 		wp_enqueue_style( 'owlcarousel-style',  get_template_directory_uri() . '/css/owl.carousel.min.css', array(), '2.2.0' );
 		wp_enqueue_style( 'owlcarousel-theme',  get_template_directory_uri() . '/css/owl.theme.default.min.css', array('owlcarousel-style'), '2.2.0' );
-		wp_enqueue_script( 'owlcarousel', get_template_directory_uri() . '/js/sac.home.min.js', array('jquery'), '1.0.0', true);
+		wp_enqueue_script( 'sac-home', get_template_directory_uri() . '/js/sac.home.min.js', array('jquery'), '1.0.0', true);
+	} else if ( is_page_template( array('template-pages/about.php') ) ) { // load owl.carousle on these pages only
+		wp_enqueue_script( 'sac-about', get_template_directory_uri() . '/js/sac.about.min.js', array('jquery'), '1.0.0', true);
 	}
 
 

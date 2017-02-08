@@ -15,6 +15,10 @@
     width: 100%;
 	}
 
+  .copyright {
+    font-size: 80%;
+  }
+
   a {
     color: $color__light;
     &:hover {
@@ -24,7 +28,7 @@
 
   ul {
     list-style-type: none;
-    margin: 0;
+    margin: 0 0 15px 0;
     padding: 0;
 
     li{
@@ -36,7 +40,9 @@
       } // a
 
       &:first-child {
-        a { padding-left:0; }
+        a {
+            @include breakpoint($screen-sm) { padding-left:0; }
+        }
       }
 
       &.current-menu-item a {
