@@ -84,19 +84,19 @@
 </div><!-- .section-hubzones -->
 
 <div class="section-more">
-	<div class="entry-link">
+	<div id="link-hubzones" class="entry-link">
 		<a href="#"><img src="http://setaside.dev/wp-content/themes/sac/images/stock/image1.jpg" alt="More on HubZones"></a>
 		<h2>More on HubZones</h2>
 	</div>
-	<div class="entry-link">
+	<div id="link-certified" class="entry-link">
 		<a href="#"><img src="http://setaside.dev/wp-content/themes/sac/images/stock/image2.jpg" alt="Get Certified As a HUBZone"></a>
 		<h2>Get Certified As a HUBZone</h2>
 	</div>
-	<div class="entry-link">
+	<div id="link-owners" class="entry-link">
 		<a href="#"><img src="http://setaside.dev/wp-content/themes/sac/images/stock/image3.jpg" alt="Small Business Owners"></a>
 		<h2>Small Business Owners</h2>
 	</div>
-	<div class="entry-link">
+	<div id="link-osdbu" class="entry-link">
 		<a href="#"><img src="http://setaside.dev/wp-content/themes/sac/images/stock/image4.jpg" alt="OSDBU"></a>
 		<h2>OSDBU</h2>
 	</div>
