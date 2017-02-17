@@ -33,6 +33,7 @@ input[type="submit"] {
   &:focus,
   &.focus {
     text-decoration: none;
+    color: $color__light;
   }
 
   &:active,
@@ -61,7 +62,16 @@ input[type="submit"] {
 
 	&:hover,
   &:focus,
+  &:visited,
   &.focus {
     background-color: darken($color__blue, 10%);
   }
+}
+
+a.btn-blue,
+a.btn-blue:hover,
+a.btn-blue:focus,
+a.btn-blue:visited,
+a.btn-blue.focus {
+  color: $color__light;
 }

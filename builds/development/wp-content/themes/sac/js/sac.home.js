@@ -23,8 +23,11 @@ if(b.numberStep){var c=this.each(function(){this._animateNumberSetter=b.numberSt
 // owl carousel
 $('.section-carousel').owlCarousel({
     items:1,
+    dots:true,
+    nav:true,
     lazyLoad:true,
     loop:true,
+    animateOut: 'fadeOut',
     autoHeightClass:'owl-lazy',
     margin:0
 });
@@ -76,36 +79,19 @@ var homeScene03 = new ScrollMagic.Scene({
 
 
 // .section-more
-var xval = 0 - $(".entry-link").width();
-console.log(xval);
+var boxWidth = $('.section-more .entry-link').width() + 10;
 var homeMoreTl = new TimelineMax();
 homeMoreTl
-.from($('#link-hubzones img'), 0.6, {x:'-5000px', ease:Power0.easeNone}, 0)
-.from($('#link-certified img'), 0.6, {x: '-5000px', ease:Power0.easeNone}, 0.6)
-.from($('#link-owners img'), 0.6, {x: '-5000px', ease:Power0.easeNone}, 0)
-.from($('#link-osdbu img'), 0.6, {x: '-5000px', ease:Power0.easeNone}, 0.6)
+.from($('.section-more .entry-link:eq(0) img'), 0.5, {x:-boxWidth+'px', ease:Power0.easeNone}, 0.2)
+.from($('.section-more .entry-link:eq(1) img'), 0.5, {x:-boxWidth+'px', ease:Power0.easeNone}, 0.8)
+.from($('.section-more .entry-link:eq(2) img'), 0.5, {x:-boxWidth+'px', ease:Power0.easeNone}, 0.2)
+.from($('.section-more .entry-link:eq(3) img'), 0.5, {x:-boxWidth+'px', ease:Power0.easeNone}, 0.8)
 ;
 var homeScene04 = new ScrollMagic.Scene({
   triggerElement: '.section-more'
 })
 .setTween(homeMoreTl)
 .addTo(controller);
-
-
-// #section-about scene
-// var homeMoreLinksTl = new TimelineMax();
-// homeMoreLinksTl
-//   .from('#section-about-content', 0.4, {autoAlpha: 0, y: '100px', ease:Power0.easeNone}, 0.6)
-//   .from($('.section-about .bcg'), 2, {y: '-75%', ease:Power0.easeNone}, 0)
-//   ;
-//
-// var homeScene04 = new ScrollMagic.Scene({
-//   triggerElement: '.section-about',
-//   triggerHook: 1,
-//   duration: '175%'
-// })
-// .setTween(homeMoreLinksTl)
-// .addTo(controller);
 
 
 

@@ -127,18 +127,22 @@
 	}
 
 	&::after {
-		content: '';
-    display: inline-block;
-    width: 100%;
+		@include breakpoint($screen-sm) {
+			content: '';
+	    display: inline-block;
+	    width: 100%;
+		}
 	}
 
 	& > .container {
 		text-align: justify;
-		padding: 1em 0;
+		@include breakpoint($screen-sm) { padding: 1em 0; }
 		&::after {
-			content: '';
-	    display: inline-block;
-	    width: 100%;
+			@include breakpoint($screen-sm) {
+				content: '';
+		    display: inline-block;
+		    width: 100%;
+			}
 		}
 	}
 
@@ -166,12 +170,13 @@
 	}
 
 	.site-branding {
-		display:block;
+		display: inline-block;
 		vertical-align: middle;
 		height: 100%;
 		text-align: left;
+		margin-top: 1em;
 
-		@include breakpoint($screen-sm) { display:inline-block; }
+		@include breakpoint($screen-sm) { display:inline-block; margin-top: 0; }
 
 		&::before {
 			content: '';
@@ -197,14 +202,27 @@
 		}
 	} //.site-branding
 
+	.hamburger {
+		display: inline-block;
+		margin-top: 1em;
+		float: right;
+		@include breakpoint($screen-sm) { display:none; }
+	}
+
 	.main-navigation {
-		display: block;
+		display: none;
 		vertical-align: middle;
 		font-weight: 600;
 		text-transform: uppercase;
+		border-top: 2px solid rgba($color__dark, .1);
 		@include font-size(1.125);
 
-		@include breakpoint($screen-sm) { display:inline-block; }
+		@include breakpoint($screen-sm) { display:inline-block; border-top: none; }
+
+		// &.is-active {
+		// 	display:block;
+		// 	@include breakpoint($screen-sm) { display:inline-block; }
+		// }
 
 		ul {
 	    list-style-type: none;
@@ -213,7 +231,8 @@
 
 			li{
 				display: block;
-				@include breakpoint($screen-sm) { display:inline; }
+				padding: 1em 0;
+				@include breakpoint($screen-sm) { display:inline; padding: 0; }
 
 				a {
 					padding: 0 30px;
@@ -236,11 +255,50 @@
 
 } //.site-header
 
+.page-navigation {
+	position: relative;
+	float: left;
+	width: 100%;
+	background-color: $color__red;
+
+  @include breakpoint($screen-sm) {
+		text-align: center;
+	}
+
+	& > .container {
+		padding: 35px 15px;
+		transition: all .5s;
+	}
+
+	&.small > .container {
+		@include breakpoint($screen-sm) {
+			padding: 0 15px;
+		}
+	}
+
+	&.small {
+		@include breakpoint($screen-sm) {
+			position: fixed;
+			top: 72px;
+			z-index: 999;
+			box-shadow: 0 4px 2px 0 rgba(0,0,0,.1), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+		}
+
+		#page-menu li {
+			@include breakpoint($screen-sm) { margin: 0 20px; }
+		}
+	}
+
+} //.page-navigation
+
 
 #page-menu {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	@include breakpoint($screen-sm) {
+		text-align: center;
+	}
 
 
 	a {
@@ -253,26 +311,29 @@
 	}
 
 	li {
+		position: relative;
 		@include breakpoint($screen-sm) {
-			float: left;
+			display: inline-block;
+			margin: 10px 20px;
 			text-align: center;
 		}
 
-		&::after {
-			@include breakpoint($screen-sm) {
-				content: '';
-				border-left: 1px solid $color__light;
-				color: $color__light;
-				margin: 0 40px;
-			}
-		}
+		// &::after {
+		// 	@include breakpoint($screen-sm) {
+		// 		content: '';
+		// 		border-left: 1px solid $color__light;
+		// 		color: $color__light;
+		// 		margin: 0 40px;
+		// 	}
+		// }
+		//
+		// &:last-child::after {
+		// 	@include breakpoint($screen-sm) {
+		// 		content: '';
+		// 		border: none;
+		// 	}
+		// }
 
-		&:last-child::after {
-			@include breakpoint($screen-sm) {
-				content: '';
-				border: none;
-			}
-		}
 	} // li
 
 	@include breakpoint($screen-sm) {

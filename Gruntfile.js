@@ -48,6 +48,12 @@ module.exports = function(grunt) {
 					'<%= paths.src.js %>about.js'
 				],
 				dest: '<%= paths.dest.js %>sac.about.js'
+			},
+			learn: {
+				src: [
+					'<%= paths.src.js %>learn.js'
+				],
+				dest: '<%= paths.dest.js %>sac.learn.js'
 			}
 		}, // concat
 
@@ -78,6 +84,15 @@ module.exports = function(grunt) {
         files: {
           '<%= paths.dest.js %>sac.about.min.js': ['<%= paths.dest.js %>sac.about.js']
         }
+      },
+      learn: {
+				options: {
+	        // the banner is inserted at the top of the output
+	        banner: '/*! <%= pkg.name %> - Learn Page Scripts - v<%= pkg.version %> <%= grunt.template.today("mm/dd/yyyy") %> */\n'
+	      },
+        files: {
+          '<%= paths.dest.js %>sac.learn.min.js': ['<%= paths.dest.js %>sac.learn.js']
+        }
       }
     },
 
@@ -89,6 +104,7 @@ module.exports = function(grunt) {
 					includePaths: [
 						'bower_components/breakpoint-sass/stylesheets',
 						'bower_components/font-awesome/scss',
+						'bower_components/css-hamburgers/_sass/hamburgers',
 						'bower_components/object-fit/dist'
 					]
 				},
@@ -102,7 +118,12 @@ module.exports = function(grunt) {
 			dist: {
 				options: {
 					outputStyle: 'compressed',
-					includePaths: ['bower_components/breakpoint-sass/stylesheets', 'bower_components/font-awesome/scss']
+					includePaths: [
+						'bower_components/breakpoint-sass/stylesheets',
+						'bower_components/font-awesome/scss',
+						'bower_components/css-hamburgers/_sass/hamburgers',
+						'bower_components/object-fit/dist'
+					]
 				},
 				files: [{
 					src: '<%= paths.src.scss %>style.scss',
