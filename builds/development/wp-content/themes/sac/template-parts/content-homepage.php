@@ -9,95 +9,165 @@
 
 ?>
 
-<div class="section-carousel owl-carousel">
-	<div class="owl-lazy" data-src="http://setaside.dev/wp-content/themes/sac/images/stock/carousel-1.jpg">
-		<div class="slide-caption">
-			<div class="slide-border">
-				<div class="slide-header"><i class="fa fa-star" aria-hidden="true"></i></div>
-				<h2>Federal Agencies missed $4.1 Billion in contract opportunies intended for HUBZone small business</h2>
-				<p>That's $4.1 billion in jobs and growth denied to HUBZone families and small businesses all ascross America in areas that need help the most.</p>
-				<hr>
-				<p>HELP US UNLEASH AMERICA'S JOB CREATORS</p>
-				<button class="btn-blue">SIGN THE PETITION</button>
-			</div>
-		</div>
-	</div><!-- .slide -->
-	<div class="owl-lazy" data-src="http://setaside.dev/wp-content/themes/sac/images/stock/carousel-2.jpg">
-		<div class="slide-caption">
-			<div class="slide-border">
-				<div class="slide-header"><i class="fa fa-star" aria-hidden="true"></i></div>
-				<h2>Federal Agencies missed $4.1 Billion in contract opportunies intended for HUBZone small business</h2>
-				<p>That's $4.1 billion in jobs and growth denied to HUBZone families and small businesses all ascross America in areas that need help the most.</p>
-				<hr>
-				<p>HELP US UNLEASH AMERICA'S JOB CREATORS</p>
-				<button class="btn-blue">SIGN THE PETITION</button>
-			</div>
-		</div>
-	</div><!-- .slide -->
-</div><!-- .section-carousel -->
+
+	<?php
+
+	// check if the repeater field has rows of data
+	if( have_rows('home-carousel') ): ?>
+
+		<div class="section-carousel owl-carousel owl-theme">
+
+	<?php
+	 	// loop through the rows of data
+	    while ( have_rows('home-carousel') ) : the_row();
+
+					// vars
+					$slide_image = get_sub_field('slide_image');
+					$slide_content = get_sub_field('slide_content');
+					$slide_btn_display = get_sub_field('slide_button');
+					$slide_btn_text = get_sub_field('slide_button_text');
+					$slide_btn_link = get_sub_field('slide_button_url');
+
+	?>
+					<div class="owl-lazy" data-src="<?php echo $slide_image['url']; ?>">
+						<div class="slide-caption">
+							<div class="slide-border">
+								<div class="slide-header"><i class="fa fa-star" aria-hidden="true"></i></div>
+
+								<?php echo $slide_content; ?>
+
+								<?php if($slide_btn_display): ?>
+									<a class="btn btn-blue" href="<?php echo $slide_btn_link; ?>"><?php echo $slide_btn_text; ?></a>
+								<?php endif; ?>
+							</div>
+						</div>
+					</div><!-- .slide -->
+<?php
+	    endwhile; ?>
+
+			</div><!-- .section-carousel -->
+
+<?php
+	else :
+
+	    // no rows found
+
+	endif;
+
+	?>
+
+
+
+<?php
+	// about section vars
+	$about_image = get_field('about_bg_image');
+	$about_title = get_field('about_title');
+	$about_content = get_field('about_content');
+?>
+
+
+<?php if( !empty($about_title) || !empty($about_content) ): ?>
 
 <div class="section-about">
-	<div class="bcg" style="background-image:url('http://setaside.dev/wp-content/themes/sac/images/stock/monument.jpg')"></div>
+	<div class="bcg" style="background-image:url('<?php echo $about_image['url']; ?>')"></div>
 	<div class="container">
-		<h2 class="entry-title">What Set Aside Central Does</h2>
+		<h2 class="entry-title"><?php echo $about_title; ?></h2>
 		<div id="section-about-content" class="entry-content">
-			<p>Set Aside Central is the developer of the <strong>Small Business Contracting Dashboard</strong> &mdash; a Best Practices software solution designed to connect over $4.1 billion  in available government contracts to HUBZone small businesses located in America's most vulnerable areas.</p>
+			<?php echo $about_content; ?>
 		</div>
 	</div>
 </div><!-- .section-about -->
 
-<div class="section-map" style="background-image:url('http://setaside.dev/wp-content/themes/sac/images/stock/flag_red.jpg')">
-	<video class="video-bg" autoplay loop="true" width="960" height="540">
-    <source type="video/mp4" src="http://setaside.dev/wp-content/themes/sac/images/stock/flag.mp4">
-  </video>
+<?php endif; ?>
+
+
+<?php
+	// map section vars
+	$map_bg_image = get_field('map_bg_image');
+	$map_bg_video = get_field('map_bg_video');
+	$map_top_content = get_field('map_top_content');
+	$map_boxed_content = get_field('map_boxed_content');
+	$map_image = get_field('map_content_image');
+?>
+
+<?php if( !empty($map_top_content) || !empty($map_boxed_content) ): ?>
+
+<div class="section-map" style="background-image:url('<?php echo $map_bg_image['url']; ?>')">
+	<?php if( !empty($map_bg_video) ): ?>
+		<video class="video-bg" autoplay loop="true" width="960" height="540" poster="<?php echo $map_bg_image['url']; ?>">
+	    <source type="video/mp4" src="<?php echo $map_bg_video['url']; ?>">
+	  </video>
+	<?php endif; ?>
 	<div class="overlay"></div>
 	<div class="container">
-		<h2 class="entry-title"><span class="new-line">more than <span id="hubzone-contractors" class="text-large">5,000</span> Hubzone Certified Contractors Nationwide</span> <span class="new-line">employing over <span id="hubzone-employed" class="text-large">75,000</span> people</span></h2>
-		<div class="entry-map"><img src="http://setaside.dev/wp-content/themes/sac/images/stock/map.png" alt="HUBZones Map"></div>
+		<h2 class="entry-title"><?php echo $map_top_content; ?></h2>
+		<div class="entry-map"><img src="<?php echo $map_image['url']; ?>" alt="<?php echo $map_image['alt']; ?>"></div>
 		<div id="section-map-content" class="entry-container">
 				<div class="bcg"></div>
 				<div class="entry-content">
-					<h2><span class="new-line text-large">TOP 5</span> HUBZone Industries</h2>
-					<ol>
-					<li>Commercial Construction</li>
-					<li>Civil Engineering</li>
-					<li>Computer related services</li>
-					<li>Road Construction</li>
-					<li>Facilities Support</li>
-					</ol>
+					<?php echo $map_boxed_content; ?>
 				</div>
 		</div>
 	</div>
 </div><!-- .section-map -->
 
+<?php endif; ?>
+
+<?php
+	// hubzones section vars
+	$hubzone_image = get_field('hubzone_image');
+	$hubzone_title = get_field('hubzone_title');
+	$hubzone_content = get_field('hubzone_content');
+?>
+
+
+<?php if( !empty($hubzone_title) || !empty($hubzone_content) ): ?>
+
 <div class="section-hubzones">
 	<div class="container">
 		<div class="entry-content equalheights">
-				<h2 class="entry-title">What Are HUBZones?</h2>
-				<p>A HUBZone is a <span class="text-red">Historically Underutilized Business Zones</span> program that helps small
-	businesses in vulnerable communities gain access to federal procurement opportunities.</p>
+				<h2 class="entry-title"><?php echo $hubzone_title; ?></h2>
+				<?php echo $hubzone_content; ?>
 		</div>
 	</div>
 	<div class="entry-image equalheights">
-		<div class="bcg" style="background-image:url('http://setaside.dev/wp-content/themes/sac/images/stock/hubzones.jpg')"></div>
+		<div class="bcg" style="background-image:url('<?php echo $hubzone_image['url']; ?>')"></div>
 	</div>
 </div><!-- .section-hubzones -->
 
-<div class="section-more">
-	<div id="link-hubzones" class="entry-link">
-		<a href="#"><img src="http://setaside.dev/wp-content/themes/sac/images/stock/image1.jpg" alt="More on HubZones"></a>
-		<h2>More on HubZones</h2>
-	</div>
-	<div id="link-certified" class="entry-link">
-		<a href="#"><img src="http://setaside.dev/wp-content/themes/sac/images/stock/image2.jpg" alt="Get Certified As a HUBZone"></a>
-		<h2>Get Certified As a HUBZone</h2>
-	</div>
-	<div id="link-owners" class="entry-link">
-		<a href="#"><img src="http://setaside.dev/wp-content/themes/sac/images/stock/image3.jpg" alt="Small Business Owners"></a>
-		<h2>Small Business Owners</h2>
-	</div>
-	<div id="link-osdbu" class="entry-link">
-		<a href="#"><img src="http://setaside.dev/wp-content/themes/sac/images/stock/image4.jpg" alt="OSDBU"></a>
-		<h2>OSDBU</h2>
-	</div>
-</div><!-- .section-more -->
+<?php endif; ?>
+
+<?php
+
+// check if the repeater field has rows of data
+if( have_rows('more_links') ): ?>
+	<div class="section-more">
+<?php
+ 	// loop through the rows of data
+    while ( have_rows('more_links') ) : the_row();
+
+				// vars
+				$links_image = get_sub_field('link_image');
+				$links_title = get_sub_field('link_title');
+				$links_url = get_sub_field('link_url');
+?>
+
+				<div class="entry-link">
+					<a href="<?php echo $links_url; ?>">
+						<img src="<?php echo $links_image['url']; ?>" alt="<?php echo $links_image['alt']; ?>">
+						<h2><?php echo $links_title; ?></h2>
+					</a>
+				</div>
+
+<?php
+    endwhile;
+?>
+	</div><!-- .section-more -->
+<?php
+else :
+
+    // no rows found
+
+endif;
+
+?>

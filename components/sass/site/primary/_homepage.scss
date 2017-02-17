@@ -4,9 +4,12 @@
   p { letter-spacing: 2px; }
 
   h2 {
-    @include font-size(2.5);
+    @include font-size(1.8);
     font-weight: normal;
     line-height: 1.2;
+    @include breakpoint($screen-sm) {
+      @include font-size(2.5);
+    }
   }
 
   hr {
@@ -19,15 +22,16 @@
       float: left;
       position: relative;
 
-    .owl-item {
-      position: relative;
-      min-height: 1px;
-      float: left;
-      user-select: none;
-    }
+    // .owl-item {
+    //   position: relative;
+    //   min-height: 1px;
+    //   float: left;
+    //   user-select: none;
+    // }
 
     .owl-lazy {
-      height: 700px;
+      padding: 1em 1em;
+      @include breakpoint($screen-sm) { padding: 6em 1em; }
       background-position: bottom;
       background-repeat: no-repeat;
       background-size: cover;
@@ -35,13 +39,15 @@
 
     .slide-caption {
       position: relative;
+      display: block;
       color: $color__light;
       padding: 1em;
       background-color: rgba($color__dark, 0.6);
-      top: 50%;
-      transform: perspective(1px) translateY(-50%);
+      //top: 50%;
+      //transform: perspective(1px) translateY(-50%);
       margin: 0 auto;
       text-align: center;
+      transition: all 1s;
 
       @extend .container;
 
@@ -151,7 +157,8 @@
     }
 
     h2 {
-      @include font-size(2.25);
+      @include font-size(1.8);
+      @include breakpoint($screen-sm) {  @include font-size(2.25); }
     }
 
     .entry-title {
@@ -171,7 +178,7 @@
       position: relative;
       padding: 2em;
       width: 100%;
-      margin-top: -20%;
+      margin-top: -70%;
       margin-left: 0;
       @include breakpoint($screen-sm) {
         width: 50%;
@@ -231,8 +238,9 @@
     }
 
     .text-large {
-      @include font-size(3.5);
+      @include font-size(2.5);
       font-weight: 700;
+      @include breakpoint($screen-sm) {  @include font-size(3.5); }
     }
 
     .video-bg {
@@ -277,10 +285,6 @@
     letter-spacing: 0px;
 
     p { letter-spacing: 0px; }
-
-    .text-red {
-      color: $color__red;
-    }
 
     .entry-title {
       position: relative;
@@ -339,14 +343,14 @@
       width: 100%;
       float: left;
       margin: 0;
-      padding: 0;
+      padding: 2em 0;
 
       @include breakpoint($screen-sm) {
         width: 50%;
         padding: 5em 3em 5em .5em;
       }
     }
-  }
+  } //.section-hubzones
 
   .section-more {
     width: 100%;
@@ -362,10 +366,11 @@
       overflow: hidden;
       position: relative;
       background-color: $color__blue;
-      height: 25em; // must match image height
+      height: 15em; // must match image height
 
       @include breakpoint($screen-sm) {
         width: 25%;
+        height: 25em;
       }
 
       &:hover {
@@ -398,13 +403,86 @@
 
   }
 
-  #hubzone-contractors {
-    width: 151px;
-    display: inline-block;
-  }
-  #hubzone-employed {
-    width: 176px;
-    display: inline-block;
-  }
+  // #hubzone-contractors {
+  //   width: 151px;
+  //   display: inline-block;
+  // }
+  // #hubzone-employed {
+  //   width: 176px;
+  //   display: inline-block;
+  // }
 
 } //.page-template-homepage
+
+/* --- Carousel Custom Styles --- */
+.owl-lazy {
+  cursor: pointer;
+}
+
+.owl-nav {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  margin-top: 0 !important;
+  background: none !important;
+  pointer-events: none;
+}
+
+.owl-prev, .owl-next {
+  position: absolute;
+  text-indent: -9999px;
+  top: 0;
+  width: 82px !important;
+  height: 100%;
+  margin: 0 5px !important;
+  vertical-align: middle;
+  background: transparent !important;
+  opacity: 0.7;
+  font-family: FontAwesome;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  pointer-events: auto;
+  color: $color__light;
+}
+
+.owl-prev:hover, .owl-next:hover {
+  background-color: rgba($color__blue,0.3) !important;
+  opacity: 1;
+}
+
+.owl-prev {
+  left:0;
+}
+
+.owl-next {
+  right:0;
+}
+
+.owl-prev::before, .owl-next::before {
+  position: absolute;
+  top: 50%;
+  margin-top: -25px;
+  font-size: 82px;
+  text-indent: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.owl-prev::before {
+  content: "\f053";
+}
+
+.owl-next::before {
+  content: "\f054";
+}
+
+.owl-dots {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}

@@ -38,12 +38,3 @@ var aboutScene02 = new ScrollMagic.Scene({
 
 
  })(jQuery);
-
-
-
- // .addIndicators({
- //   name: 'parallax-fadein',
- //   colorTrigger: 'yellow',
- //   colorStart: 'red',
- //   colorEnd: 'green'
- // })

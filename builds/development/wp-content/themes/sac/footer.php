@@ -15,10 +15,13 @@
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="container">
-			<?php wp_nav_menu( array( 'theme_location' => 'footer', 'menu_id' => 'footer-menu' ) ); ?>
-			<div class="site-info">
-				<a class="copyright" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php printf( esc_html__( 'Copyright &copy; %d %s', 'sac' ), date("Y"), 'Set Aside Central' ); ?></a>
-			</div><!-- .site-info -->
+			<div class="footer-widget">
+				<?php wp_nav_menu( array( 'theme_location' => 'footer', 'menu_id' => 'footer-menu' ) ); ?>
+				<div class="site-info">
+					<a class="copyright" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php printf( esc_html__( 'Copyright &copy; %d %s', 'sac' ), date("Y"), 'Set Aside Central' ); ?></a>
+				</div><!-- .site-info -->
+		</div><!-- .footer-widget -->
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img class="footer-logo" src="<?php echo get_template_directory_uri() . '/images/sac_bw.png'; ?>" alt="<?php bloginfo( 'name' ); ?>"></a>
 		</div><!-- .container -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

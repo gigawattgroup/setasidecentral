@@ -54,17 +54,10 @@
 
 } //.section-featured
 
-.page-navigation {
-	position: relative;
-	float: left;
-	width: 100%;
-	background-color: $color__red;
+.text-blue {
+	color: $color__blue;
+}
 
-  @include breakpoint($screen-sm) {
-		text-align: center;
-	}
-
-	& > .container {
-		padding: 35px 15px;
-	}
-} //.page-navigation
+.text-red {
+	color: $color__red;
+}

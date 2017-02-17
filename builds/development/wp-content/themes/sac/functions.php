@@ -41,6 +41,7 @@ function sac_setup() {
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
 	add_theme_support( 'post-thumbnails' );
+	add_image_size( 'sac-box', 600, 600, false );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -136,6 +137,8 @@ function sac_scripts() {
 		wp_enqueue_script( 'sac-home', get_template_directory_uri() . '/js/sac.home.min.js', array('jquery'), '1.0.0', true);
 	} else if ( is_page_template( array('template-pages/about.php') ) ) { // load owl.carousle on these pages only
 		wp_enqueue_script( 'sac-about', get_template_directory_uri() . '/js/sac.about.min.js', array('jquery'), '1.0.0', true);
+	} else if ( is_page_template( array('template-pages/learn.php') ) ) { // load owl.carousle on these pages only
+		wp_enqueue_script( 'sac-learn', get_template_directory_uri() . '/js/sac.learn.min.js', array('jquery'), '1.0.0', true);
 	}
 
 
@@ -149,6 +152,13 @@ function sac_scripts() {
 
 }
 add_action( 'wp_enqueue_scripts', 'sac_scripts' );
+
+/**
+ * Custom fields feature.
+ */
+require get_template_directory() . '/inc/custom-fields-setup.php';
+
+require get_template_directory() . '/inc/custom-fields.php';
 
 /**
  * Implement the Custom Header feature.

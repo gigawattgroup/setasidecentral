@@ -1,0 +1,367 @@
+.page-template-learn {
+  @include font-size(1.125);
+
+  h2 {
+    position: relative;
+    display: inline-block;
+    @include font-size(1.8);
+    color: lighten($color__red, 10%);
+    margin-top: 0;
+    @include breakpoint($screen-sm) {
+      @include font-size(2.5);
+    }
+
+    &::before {
+      content: '';
+      background-color: darken($color__blue, 10%);
+      width: 75px;
+      height: 3px;
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+		}
+  }
+
+
+  .section-featured {
+    text-align: left;
+    background-color: $color__dark;
+    .bcg {
+      opacity: 0.5;
+    }
+
+    h1::before {
+      left: 0;
+      transform: translateX(0);
+    }
+
+    p {
+      max-width: 570px;
+    }
+  } //.section-featured
+
+  .section-setasides, .section-hubzones {
+    position: relative;
+    width: 100%;
+    float: left;
+    @include clearfix;
+    @include clearfix-after;
+
+    @include breakpoint($screen-sm) { @include font-size(1.5); }
+    letter-spacing: 0px;
+
+    p { letter-spacing: 0px; }
+
+    .entry-title {
+      position: relative;
+      margin-bottom: 40px;
+      display: block;
+      text-align: center;
+
+      @include breakpoint($screen-sm) { display: inline-block; text-align: left; }
+    }
+
+    .entry-image {
+      position: relative;
+      display: none;
+      float: left;
+      width: 100%;
+      padding: 5em 1em; // must match .entry-content padding
+      overflow: hidden;
+      transform-origin: 0 0;
+
+      @include breakpoint($screen-sm) {
+        display: block;
+        width: 50%;
+        padding: 5em 1em; // must match .entry-content padding
+      }
+
+      .bcg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: 1200ms all ease-in-out;
+      }
+
+      &:hover {
+        .bcg {
+          width: 110%;
+          height: 110%;
+          top: -5%;
+          left: -5%;
+        }
+      }
+    } //.entry-image
+
+    .entry-content {
+      width: 100%;
+      float: left;
+      margin: 0;
+      padding: 2em 0;
+
+      @include breakpoint($screen-sm) {
+        width: 50%;
+        padding: 5em 3em 5em .5em;
+      }
+    }
+  } //.section-setasides
+
+  .section-hubzones {
+    .entry-content {
+      padding: 2em 0;
+      @include breakpoint($screen-sm) {
+        width: 50%;
+        padding: 5em .5em 5em 3em;
+      }
+    }
+  }//.section-hubzones
+
+  .section-eligibility {
+    @include section(100px);
+    overflow: hidden;
+    text-align: center;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include breakpoint($screen-sm) { min-height: 700px; }
+
+    & > .container {
+      @include breakpoint($screen-sm) { padding: 150px 15px; }
+    }
+
+    .video-bg {
+      /* Make video to at least 100% wide and tall */
+      min-width: 100%;
+      min-height: 100%;
+
+      /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+      width: auto;
+      height: auto;
+
+      /* Center the video */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+
+    .overlay {
+      position: absolute;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      left: 0;
+      top: 0;
+      background-color: rgba($color__light, 0.9);
+    }
+
+    .entry-content {
+      background-color: $color__light;
+      border: 2px solid rgba($color__dark, .1);
+      padding: .5em;
+      margin: 0;
+    } //.entry-content
+
+    .container-border {
+      width: 100%;
+      position: relative;
+      background-color: $color__light;
+      border: 2px solid rgba($color__dark, .1);
+      padding: .5em;
+
+      @include clearfix;
+      @include clearfix-after;
+
+    } //.container-border
+
+    ul {
+      position: relative;
+      list-style: none;
+      text-align: left;
+      margin: 0;
+      padding: 0;
+
+      li {
+        display: block;
+        float: left;
+        padding: 0 10px;
+        margin-bottom: 15px;
+
+        @include breakpoint($screen-sm) { width: 50%; @include font-size(1.5); }
+        @include breakpoint($screen-lg) { width: 25%; }
+      }
+    } //ul
+
+    .content-order {
+      @include font-size(3.75);
+      color: lighten($color__red, 10%);
+      text-align: center;
+      @include breakpoint($screen-sm) { text-align: left; }
+    }
+
+    .content-desc {
+      text-align: center;
+      @include breakpoint($screen-sm) { text-align: left; }
+    }
+
+    .content-link {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+  } //.section-eligibility
+
+
+  .section-getcert {
+    @include section(100px);
+    background-color: $color__blue;
+    overflow: hidden;
+    text-align: center;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include breakpoint($screen-sm) { min-height: 700px; }
+
+    & > .container {
+      @include breakpoint($screen-sm) { padding: 150px 15px; }
+    }
+
+    .entry-title { color: $color__light; }
+
+    .entry-content {
+      background-color: $color__light;
+      border: 2px solid rgba($color__dark, .1);
+      padding: .5em;
+      margin: 0;
+      vertical-align: center;
+      width: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: stretch;
+
+      @include breakpoint($screen-md) { flex-wrap: nowrap; }
+    } //.entry-content
+
+    .container-border {
+      width: 100%;
+      position: relative;
+      background-color: $color__light;
+      border: 2px solid rgba($color__dark, .1);
+      padding: .5em;
+
+      @include clearfix;
+      @include clearfix-after;
+
+    } //.container-border
+
+    ul {
+      position: relative;
+      list-style: none;
+      text-align: left;
+      margin: 0;
+      padding: 0;
+
+      li {
+        display: block;
+        padding: 0 10px;
+        margin-bottom: 15px;
+        @include breakpoint($screen-md) { @include font-size(1.5); }
+      }
+    } //ul
+
+    .content-order, .content-desc, .content-link {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .content-order {
+      @include font-size(3.75);
+      color: lighten($color__red, 10%);
+      //border: 1px solid red;
+      align-items: center;
+      flex-basis: 20%;
+      @include breakpoint($screen-md) { flex-basis: auto; }
+
+    }
+
+    .content-desc {
+      //border: 1px solid green;
+      flex-grow: 1;
+      flex-shrink: 1;
+      align-items: left;
+      padding: 0 1em;
+      flex-basis: 80%;
+      @include breakpoint($screen-md) { flex-basis: auto; }
+      p { padding: 0; margin: 0 }
+
+    }
+
+    .content-link {
+      //border: 1px solid blue;
+      text-align: center;
+      align-items: center;
+      flex-basis: 100%;
+      @include breakpoint($screen-md) { flex-basis: auto; }
+
+    } // .content-link
+
+  } //.section-getcert
+
+
+  .section-registration {
+    @include section(100px);
+    overflow: hidden;
+
+    @include breakpoint($screen-sm) { display: inline-block; text-align: left; @include font-size(1.5); }
+
+    & > .container {
+      @include breakpoint($screen-sm) { padding: 150px 15px; }
+    }
+
+    .bcg {
+      height: 175%;
+      background-position: bottom;
+    }
+
+    .overlay {
+      position: absolute;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      left: 0;
+      top: 0;
+      z-index: 1;
+      background-color: rgba($color__light, 0.8);
+    }
+
+    .entry-title {
+      display: block;
+      text-align: center;
+
+      @include breakpoint($screen-sm) { display: inline-block; text-align: left; }
+    }
+
+    .entry-content {
+      width: 100%;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-position: inside;
+    }
+
+  } //.section-registration
+
+} //.page-template-about

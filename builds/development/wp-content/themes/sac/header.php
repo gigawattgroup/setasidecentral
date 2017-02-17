@@ -39,8 +39,14 @@
 						<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
 					<?php
 					endif; ?>
-					<img class="site-logo" src="<?php echo get_template_directory_uri() . '/images/sac.png'; ?>" alt="<?php bloginfo( 'name' ); ?>">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img class="site-logo" src="<?php echo get_template_directory_uri() . '/images/sac.png'; ?>" alt="<?php bloginfo( 'name' ); ?>"></a>
 				</div><!-- .site-branding -->
+
+				<button class="hamburger hamburger--collapse" type="button">
+				  <span class="hamburger-box">
+				    <span class="hamburger-inner"></span>
+				  </span>
+				</button>
 
 				<nav id="site-navigation" class="main-navigation" role="navigation">
 					<!--<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'sac' ); ?></button>-->

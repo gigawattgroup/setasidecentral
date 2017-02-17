@@ -27,6 +27,7 @@
     "jquery-animateNumber": "^0.0.14",
     "breakpoint-sass": "^2.7.1",
     "font-awesome": "^4.7.0",
-    "matchMedia": "^0.3.0"
+    "matchMedia": "^0.3.0",
+    "css-hamburgers": "^0.7.0"
   }
 }
