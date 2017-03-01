@@ -6,7 +6,9 @@
   text-align: justify;
   min-height: $size__site-footer;
   padding: 1.75em 0 0.5em;
+  text-transform: uppercase;;
 	transition: all .5s;
+  @include font-size(1.125);
 
 
   &::after {
@@ -28,6 +30,7 @@
   .footer-logo {
     float: left;
     margin-top: 1em;
+    width: 150px;
     @include breakpoint($screen-sm) {
       margin-top: 0;
       float: right;
@@ -43,7 +46,7 @@
 
   ul {
     list-style-type: none;
-    margin: 0 0 15px 0;
+    margin: 0 0 5px 0;
     padding: 0;
 
     li{

@@ -4,21 +4,20 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-  display: inline-block;
-  margin-bottom: 0; // For input.btn
-  font-weight: 400;
-  text-align: center;
-  vertical-align: middle;
-  touch-action: manipulation;
-  cursor: pointer;
-  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-  border: 1px solid transparent;
-  white-space: nowrap;
-	padding: 12px 40px;
-  @include font-size(1);
-  line-height: $font__line-height-body;
-  border-radius: 4px;
-  user-select:none;
+   display: inline-block;
+   border: none;
+   color: $color__light;
+   border-radius: 0;
+   -webkit-border-radius: 0;
+   -moz-border-radius: 0;
+   font-family: Verdana;
+   width: auto;
+   height: auto;
+   font-size: 16px;
+   padding: 15px 42px;
+   background-color: $color__blue;
+   border: 1px solid $color__light;
+   text-transform: uppercase;
 
   &,
   &:active,
@@ -33,7 +32,17 @@ input[type="submit"] {
   &:focus,
   &.focus {
     text-decoration: none;
-    color: $color__light;
+    border: none;
+    color: $color__blue;
+    background-color: $color__blue;
+    box-shadow: 0px 0px 0px 0 $color__light;
+    -moz-box-shadow: 0px 0px 0px 0 $color__light;
+    -webkit-box-shadow: 0px 0px 0px 0 $color__light;
+    -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+     color: $color__light;
+     background-color: $color__blue-light;
+     border: 1px solid $color__light;
   }
 
   &:active,
@@ -54,24 +63,49 @@ input[type="submit"] {
   // [converter] extracted a& to a.btn
 }
 
-
-.btn-blue {
-	background-color: $color__blue;
-	border: 1px solid $color__light;
-	color: $color__light;
-
-	&:hover,
-  &:focus,
-  &:visited,
-  &.focus {
-    background-color: darken($color__blue, 10%);
-  }
+a.btn-home,
+a.btn-home:visited,
+a.btn-home.focus {
+  color: $color__light;
+  margin-bottom: 20px;
 }
 
-a.btn-blue,
-a.btn-blue:hover,
-a.btn-blue:focus,
-a.btn-blue:visited,
-a.btn-blue.focus {
+.btn-blue, .btn-blue:visited {
   color: $color__light;
+
+  &:hover,
+  &:focus,
+  &.focus {
+    text-decoration: none;
+    border: none;
+    background-color: $color__blue;
+    box-shadow: 0px 0px 0px 0 $color__light;
+    -moz-box-shadow: 0px 0px 0px 0 $color__light;
+    -webkit-box-shadow: 0px 0px 0px 0 $color__light;
+    -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+     color: $color__light;
+     background-color: $color__blue-light;
+     border: 1px solid $color__light;
+   }
+}
+
+.btn-outline, .btn-outline:visited {
+  color: $color__light;
+  background-color: transparent;
+
+  &:hover,
+  &:focus,
+  &.focus {
+    text-decoration: none;
+    border: none;
+    box-shadow: 0px 0px 0px 0 $color__light;
+    -moz-box-shadow: 0px 0px 0px 0 $color__light;
+    -webkit-box-shadow: 0px 0px 0px 0 $color__light;
+    -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+     color: $color__light;
+     background-color: $color__blue-light;
+     border: 1px solid $color__light;
+   }
 }
