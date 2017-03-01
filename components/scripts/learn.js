@@ -40,19 +40,19 @@ var learnScene04 = new ScrollMagic.Scene({
 .setTween(learnGetCertAnimation)
 .addTo(controller);
 
-var learnParallaxTl = new TimelineMax();
-learnParallaxTl
-  .from($('.section-registration .entry-content'), 0.4, {autoAlpha: 0, y: '100px', ease:Power0.easeNone}, 0.6)
-  .from($('.section-registration .bcg'), 2, {y: '-75%', ease:Power0.easeNone}, 0)
-  ;
+// var learnParallaxTl = new TimelineMax();
+// learnParallaxTl
+//   .from($('.section-registration .entry-content'), 0.4, {autoAlpha: 0, y: '100px', ease:Power0.easeNone}, 0.6)
+//   .from($('.section-registration .bcg'), 2, {y: '-75%', ease:Power0.easeNone}, 0)
+//   ;
 
-var learnScene05 = new ScrollMagic.Scene({
-  triggerElement: '.section-registration',
-  triggerHook: 1,
-  duration: '175%'
-})
-.setTween(learnParallaxTl)
-.addTo(controller);
+// var learnScene05 = new ScrollMagic.Scene({
+//   triggerElement: '.section-registration',
+//   triggerHook: 1,
+//   duration: '175%'
+// })
+// .setTween(learnParallaxTl)
+// .addTo(controller);
 
 
 

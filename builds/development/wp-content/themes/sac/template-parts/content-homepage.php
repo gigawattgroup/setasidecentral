@@ -37,7 +37,7 @@
 								<?php echo $slide_content; ?>
 
 								<?php if($slide_btn_display): ?>
-									<a class="btn btn-blue" href="<?php echo $slide_btn_link; ?>"><?php echo $slide_btn_text; ?></a>
+									<a class="btn btn-home" href="<?php echo $slide_btn_link; ?>"><?php echo $slide_btn_text; ?></a>
 								<?php endif; ?>
 							</div>
 						</div>

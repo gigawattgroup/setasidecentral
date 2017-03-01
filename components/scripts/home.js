@@ -26,7 +26,7 @@ homeParallaxTl
 var homeScene01 = new ScrollMagic.Scene({
   triggerElement: '.section-about',
   triggerHook: 1,
-  duration: '175%'
+  duration: '140%'
 })
 .setTween(homeParallaxTl)
 .addTo(controller);
@@ -59,7 +59,9 @@ var homeScene03 = new ScrollMagic.Scene({
 
 
 // .section-more
-var boxWidth = $('.section-more .entry-link').width() + 10;
+
+//Checkered-In Effect
+/*var boxWidth = $('.section-more .entry-link').width() + 10;
 var homeMoreTl = new TimelineMax();
 homeMoreTl
 .from($('.section-more .entry-link:eq(0) img'), 0.5, {x:-boxWidth+'px', ease:Power0.easeNone}, 0.2)
@@ -71,7 +73,7 @@ var homeScene04 = new ScrollMagic.Scene({
   triggerElement: '.section-more'
 })
 .setTween(homeMoreTl)
-.addTo(controller);
+.addTo(controller);*/
 
 
 

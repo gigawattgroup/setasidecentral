@@ -1,11 +1,11 @@
 .page-template-learn {
-  @include font-size(1.125);
+  @include font-size(1.25);
 
   h2 {
     position: relative;
     display: inline-block;
     @include font-size(1.8);
-    color: lighten($color__red, 10%);
+    color: rgba($color__red, 0.8);
     margin-top: 0;
     @include breakpoint($screen-sm) {
       @include font-size(2.5);
@@ -38,6 +38,8 @@
 
     p {
       max-width: 570px;
+      font-weight: 300;
+      letter-spacing: .5px;
     }
   } //.section-featured
 
@@ -48,10 +50,10 @@
     @include clearfix;
     @include clearfix-after;
 
-    @include breakpoint($screen-sm) { @include font-size(1.5); }
+    @include breakpoint($screen-sm) { @include font-size(1.3); }
     letter-spacing: 0px;
 
-    p { letter-spacing: 0px; }
+    p { letter-spacing: 0px; font-weight: 300;}
 
     .entry-title {
       position: relative;
@@ -91,10 +93,10 @@
 
       &:hover {
         .bcg {
-          width: 110%;
+          /*width: 110%;
           height: 110%;
           top: -5%;
-          left: -5%;
+          left: -5%;*/
         }
       }
     } //.entry-image
@@ -194,14 +196,15 @@
         padding: 0 10px;
         margin-bottom: 15px;
 
-        @include breakpoint($screen-sm) { width: 50%; @include font-size(1.5); }
+        @include breakpoint($screen-sm) { width: 50%; @include font-size(1.3); }
         @include breakpoint($screen-lg) { width: 25%; }
       }
     } //ul
 
     .content-order {
       @include font-size(3.75);
-      color: lighten($color__red, 10%);
+      color: rgba($color__red, 0.8);
+      font-family: $font__secondary;
       text-align: center;
       @include breakpoint($screen-sm) { text-align: left; }
     }
@@ -274,7 +277,7 @@
         display: block;
         padding: 0 10px;
         margin-bottom: 15px;
-        @include breakpoint($screen-md) { @include font-size(1.5); }
+        @include breakpoint($screen-md) { @include font-size(1.3); }
       }
     } //ul
 
@@ -286,8 +289,8 @@
 
     .content-order {
       @include font-size(3.75);
-      color: lighten($color__red, 10%);
-      //border: 1px solid red;
+      font-family: $font__secondary;
+      color: rgba($color__red, 0.8);
       align-items: center;
       flex-basis: 20%;
       @include breakpoint($screen-md) { flex-basis: auto; }
@@ -295,7 +298,6 @@
     }
 
     .content-desc {
-      //border: 1px solid green;
       flex-grow: 1;
       flex-shrink: 1;
       align-items: left;
@@ -322,7 +324,7 @@
     @include section(100px);
     overflow: hidden;
 
-    @include breakpoint($screen-sm) { display: inline-block; text-align: left; @include font-size(1.5); }
+    @include breakpoint($screen-sm) { display: inline-block; text-align: left; @include font-size(1.3); }
 
     & > .container {
       @include breakpoint($screen-sm) { padding: 150px 15px; }
@@ -343,6 +345,15 @@
       top: 0;
       z-index: 1;
       background-color: rgba($color__light, 0.8);
+      //background-color: rgba($color__light, 0.9);
+      background: rgba(248,248,248,1);
+      background: -moz-linear-gradient(left, rgba(248,248,248,1) 66%, rgba(255,255,255,0) 100%);
+      background: -webkit-gradient(left top, right top, color-stop(66%, rgba(248,248,248,1)), color-stop(100%, rgba(255,255,255,0)));
+      background: -webkit-linear-gradient(left, rgba(248,248,248,1) 66%, rgba(255,255,255,0) 100%);
+      background: -o-linear-gradient(left, rgba(248,248,248,1) 66%, rgba(255,255,255,0) 100%);
+      background: -ms-linear-gradient(left, rgba(248,248,248,1) 66%, rgba(255,255,255,0) 100%);
+      background: linear-gradient(to right, rgba(248,248,248,1) 66%, rgba(255,255,255,0) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color__light', endColorstr='$color__light', GradientType=1 );
     }
 
     .entry-title {
@@ -359,7 +370,18 @@
     ul {
       margin: 0;
       padding: 0;
-      list-style-position: inside;
+      list-style: none;
+      //list-style-position: inside;
+
+    }
+
+    li {
+      text-indent: .2em;
+    }
+
+    li::before {
+      content: "• ";
+      color: $color__blue; /* or whatever color you prefer */
     }
 
   } //.section-registration
