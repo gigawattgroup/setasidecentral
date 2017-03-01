@@ -525,7 +525,7 @@ acf_add_local_field_group(array (
 		),
 		array (
 			'key' => 'field_58a239cf44ebe',
-			'label' => 'Inforgraphic',
+			'label' => 'Infographic',
 			'name' => '',
 			'type' => 'tab',
 			'instructions' => '',

@@ -1,11 +1,15 @@
 .page-template-about {
 
-  @include font-size(1.125);
+  @include font-size(1.25);
+  p {
+    letter-spacing: .5px;
+    font-weight: 300;
+  }
 
   h2 {
     position: relative;
     @include font-size(2.5);
-    color: lighten($color__red, 10%);
+    color: rgba($color__red, 0.8);
     margin-top: 0;
 
     &::before {
@@ -39,6 +43,10 @@
       height: 140%;
     }
 
+    strong {
+      font-weight: 400;
+      color: rgba($color__red, 0.8);
+    }
 
     .entry-content {
       width: 100%;

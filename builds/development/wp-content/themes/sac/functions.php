@@ -144,6 +144,7 @@ function sac_scripts() {
 
 
 	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i|Noto+Serif:400,400i,700,700i' );
+	wp_enqueue_style( 'google-fonts-2', 'https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i' );
 	wp_enqueue_style( 'sac-style', get_stylesheet_uri(), array(), '1.0.0' );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
