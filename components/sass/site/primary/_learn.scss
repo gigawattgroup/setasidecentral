@@ -331,8 +331,8 @@
     }
 
     .bcg {
-      height: 175%;
-      background-position: bottom;
+      height: 120%;
+      background-position: right center;
     }
 
     .overlay {
@@ -344,16 +344,15 @@
       left: 0;
       top: 0;
       z-index: 1;
-      background-color: rgba($color__light, 0.8);
-      //background-color: rgba($color__light, 0.9);
-      background: rgba(248,248,248,1);
-      background: -moz-linear-gradient(left, rgba(248,248,248,1) 66%, rgba(255,255,255,0) 100%);
-      background: -webkit-gradient(left top, right top, color-stop(66%, rgba(248,248,248,1)), color-stop(100%, rgba(255,255,255,0)));
-      background: -webkit-linear-gradient(left, rgba(248,248,248,1) 66%, rgba(255,255,255,0) 100%);
-      background: -o-linear-gradient(left, rgba(248,248,248,1) 66%, rgba(255,255,255,0) 100%);
-      background: -ms-linear-gradient(left, rgba(248,248,248,1) 66%, rgba(255,255,255,0) 100%);
-      background: linear-gradient(to right, rgba(248,248,248,1) 66%, rgba(255,255,255,0) 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color__light', endColorstr='$color__light', GradientType=1 );
+      background: #f8f8f8;
+      @include breakpoint($screen-sm) {
+        background: linear-gradient(to right, rgba(248,248,248,1) 70%, rgba(248,248,248,0) 90%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color__light', endColorstr='$color__light', GradientType=1 );
+      }
+      @include breakpoint($screen-md) {
+        background: linear-gradient(to right, rgba(248,248,248,1) 50%, rgba(248,248,248,0) 80%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color__light', endColorstr='$color__light', GradientType=1 );
+      }
     }
 
     .entry-title {
