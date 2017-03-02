@@ -29,8 +29,8 @@
       position: relative;
 
     .owl-lazy {
-      padding: 1em 1em;
-      @include breakpoint($screen-sm) { padding: 7em 1em; }
+      position: relative;
+      padding: 20px; // percise px value needed in script so don't use em.
       background-position: bottom;
       background-repeat: no-repeat;
       background-size: cover;
@@ -42,8 +42,6 @@
       color: $color__light;
       padding: 1em;
       background-color: rgba($color__dark, 0.6);
-      //top: 50%;
-      //transform: perspective(1px) translateY(-50%);
       margin: 0 auto;
       text-align: center;
       transition: all 1s;
@@ -51,6 +49,23 @@
       @extend .container;
 
     } //.slide-caption
+
+    // add class center to carousel if owl-lazy.height > slide-caption.height
+    &.centerr {
+      .owl-lazy {
+        height: 100vh;
+        margin: -2.25em auto; // important: must be equal to 1/2 header height!
+        @include breakpoint($screen-sm) {
+          margin: -3em auto; // important: must be equal to 1/2 header height!
+        }
+      }
+      .slide-caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: perspective(1px) translateY(-50%) translateX(-50%);
+      }
+    }
 
     .slide-border {
       border: 2px solid $color__light;
@@ -414,35 +429,33 @@
       h2 {
         position: absolute;
         top: 50%;
-        left: 50%;
-        transform: perspective(1px) translateX(-50%) translateY(-50%);
+        left: 5px;
+        right: 5px;
+        transform: perspective(1px) translateY(-50%);
         margin: 0 auto;
         text-align: center;
         text-transform: uppercase;
         color: $color__light;
         font-family: $font__main;
         font-weight: 600;
+
+        span {
+          display: block;
+          &.italic {
+            font-style: italic;
+            @include font-size(1.5);
+            line-height: 1;
+            padding: 0;
+            margin: 0;
+          }
+        }
       }
 
-      span.italics{
-        font-style: italic;
-        @include font-size(1.5);
-        line-height: 0px;
-        padding: 0;
-        margin: 0;
-      }
+
     }
 
-  }
+  } //.section-more
 
-  // #hubzone-contractors {
-  //   width: 151px;
-  //   display: inline-block;
-  // }
-  // #hubzone-employed {
-  //   width: 176px;
-  //   display: inline-block;
-  // }
 
 } //.page-template-homepage
 
@@ -467,7 +480,7 @@
   top: 0;
   width: 82px !important;
   height: 100%;
-  margin: 0 5px !important;
+  margin: 0 !important;
   vertical-align: middle;
   background: transparent !important;
   opacity: 0.7;
@@ -480,6 +493,7 @@
   -moz-osx-font-smoothing: grayscale;
   pointer-events: auto;
   color: $color__light;
+  border-radius: 0;
 }
 
 .owl-prev:hover, .owl-next:hover {
