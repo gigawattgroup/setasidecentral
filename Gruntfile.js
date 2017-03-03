@@ -54,6 +54,12 @@ module.exports = function(grunt) {
 					'<%= paths.src.js %>learn.js'
 				],
 				dest: '<%= paths.dest.js %>sac.learn.js'
+			},
+			osdbu: {
+				src: [
+					'<%= paths.src.js %>osdbu.js'
+				],
+				dest: '<%= paths.dest.js %>sac.osdbu.js'
 			}
 		}, // concat
 
@@ -92,6 +98,15 @@ module.exports = function(grunt) {
 	      },
         files: {
           '<%= paths.dest.js %>sac.learn.min.js': ['<%= paths.dest.js %>sac.learn.js']
+        }
+      },
+      osdbu: {
+				options: {
+	        // the banner is inserted at the top of the output
+	        banner: '/*! <%= pkg.name %> - OSDBU Page Scripts - v<%= pkg.version %> <%= grunt.template.today("mm/dd/yyyy") %> */\n'
+	      },
+        files: {
+          '<%= paths.dest.js %>sac.osdbu.min.js': ['<%= paths.dest.js %>sac.osdbu.js']
         }
       }
     },
