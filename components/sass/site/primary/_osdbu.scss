@@ -1,0 +1,123 @@
+.page-template-osdbu {
+
+  @include font-size(1.25);
+  p {
+    letter-spacing: .5px;
+    font-weight: 300;
+  }
+
+  h2 {
+    position: relative;
+    @include font-size(2.5);
+    color: rgba($color__red, 0.8);
+    margin-top: 0;
+
+    &::before {
+			content: '';
+			border-top: 3px solid $color__blue;
+			width: 145px;
+			position: absolute;
+			display: block;
+			top: -10px;
+			left: 0;
+		}
+  }
+
+  .section-featured {
+    background-color: $color__dark;
+    .bcg {
+      opacity: 0.5;
+    }
+
+    p {
+      max-width: 570px;
+      margin: 0 auto 1.5em;
+    }
+  } //.section-featured
+
+  .section-who {
+    @include section(100px);
+    overflow: hidden;
+
+    .bcg {
+      height: 140%;
+    }
+
+    strong {
+      font-weight: 400;
+      color: rgba($color__red, 0.8);
+    }
+
+    .entry-content {
+      width: 100%;
+      @include breakpoint($screen-sm) { width: 50%; }
+    }
+
+  } //.section-who
+
+
+  .section-why {
+    @include section(150px);
+    overflow: hidden;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    @include breakpoint($screen-sm) { min-height: 700px; }
+
+    h2::before {
+      left: 50%;
+      transform: translateX(-73px);
+    }
+
+    .video-bg {
+      /* Make video to at least 100% wide and tall */
+      min-width: 100%;
+      min-height: 100%;
+
+      /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+      width: auto;
+      height: auto;
+
+      /* Center the video */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+
+    .overlay {
+      position: absolute;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      left: 0;
+      top: 0;
+      background-color: rgba($color__light, 0.9);
+    }
+
+    .entry-content {
+      background-color: $color__light;
+      border: 2px solid rgba($color__dark, .1);
+      padding: 1em;
+      margin: 0;
+    } //.entry-content
+
+    .container-border {
+      position: relative;
+      background-color: $color__light;
+      border: 2px solid rgba($color__dark, .1);
+      padding: 1em;
+
+      @include clearfix;
+      @include clearfix-after;
+
+    } //.container-border
+
+
+
+  } //.section-why
+
+
+} //.page-template-about
