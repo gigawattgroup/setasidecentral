@@ -117,7 +117,7 @@
 	z-index: 999;
 	transition: all .5s;
 	box-shadow: 0 4px 2px 0 rgba(0,0,0,.1), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
-	border-bottom: thin solid $color__blue;
+	//border-bottom: thin solid $color__blue;
 
 	@include breakpoint($screen-sm) {
 		height: $size__site-header;
@@ -207,8 +207,13 @@
 		display: inline-block;
 		margin-top: 1em;
 		float: right;
+		outline: 0;
 		@include breakpoint($screen-sm) { display:none; }
-	}
+
+		&:hover, &:active, &:focus {
+			background-color: transparent;
+		}
+	} //.hamburger
 
 	.main-navigation {
 		display: none;
@@ -234,6 +239,18 @@
 				display: block;
 				padding: 1em 0;
 				@include breakpoint($screen-sm) { display:inline; padding: 0; }
+
+				&::after {
+					@include breakpoint($screen-sm) {
+						content: '|';
+						color: lighten($color__dark, 80%);
+					}
+				}
+				&:last-child::after {
+					@include breakpoint($screen-sm) {
+						content: '';
+					}
+				}
 
 				a {
 					padding: 0 30px;

@@ -1,16 +1,38 @@
 (function($){
 
 // owl carousel
-$('.section-carousel').owlCarousel({
+var owl = $('.section-carousel');
+owl.owlCarousel({
     items:1,
     dots:true,
     nav:true,
     lazyLoad:true,
     loop:true,
-    animateOut: 'fadeOut',
-    autoHeightClass:'owl-lazy',
-    margin:0
+    autoplay:false,
+    margin:0,
+    onChanged: callback,
+    onResized: callback
 });
+
+function callback(e) {
+    var currentIndex = e.item.index;
+    var $current = $(e.target).find('.owl-item').eq(currentIndex);
+    var $caption = $current.find('.slide-caption');
+    var curh = ($current.length > 0) ? $current[0].clientHeight : 0;
+    var caph = ($caption.length > 0) ? ($caption[0].clientHeight + 41) : 0;
+
+    console.dir($current[0]);
+    console.dir($caption[0]);
+    console.log('curh: '+curh);
+    console.log('caph: '+caph);
+
+    if ( caph <= curh ) {
+      owl.addClass("centerr");
+    } else {
+      owl.removeClass("centerr");
+    }
+}
+
 
 // Init ScrollMagic
 var controller = new ScrollMagic.Controller();
