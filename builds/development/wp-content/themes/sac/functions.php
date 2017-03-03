@@ -49,6 +49,8 @@ function sac_setup() {
 		'footer' => esc_html__( 'Footer', 'sac' ),
 		'about' => esc_html__( 'About', 'sac' ),
 		'learn' => esc_html__( 'Learn', 'sac' ),
+		'osdbu' => esc_html__( 'OSDBU', 'sac' ),
+		'dashboard' => esc_html__( 'Dashboard', 'sac' ),
 	) );
 
 	/*
@@ -139,7 +141,7 @@ function sac_scripts() {
 		wp_enqueue_script( 'sac-about', get_template_directory_uri() . '/js/sac.about.min.js', array('jquery'), '1.0.0', true);
 	} else if ( is_page_template( array('template-pages/learn.php') ) ) {
 		wp_enqueue_script( 'sac-learn', get_template_directory_uri() . '/js/sac.learn.min.js', array('jquery'), '1.0.0', true);
-	} else if ( is_page_template( array('template-pages/osdbu.php') ) ) { 
+	} else if ( is_page_template( array('template-pages/osdbu.php') ) ) {
 		wp_enqueue_script( 'sac-learn', get_template_directory_uri() . '/js/sac.osdbu.min.js', array('jquery'), '1.0.0', true);
 	}
 

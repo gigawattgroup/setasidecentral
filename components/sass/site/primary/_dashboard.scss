@@ -1,0 +1,42 @@
+.page-template-dashboard {
+
+  @include font-size(1.25);
+  p {
+    letter-spacing: .5px;
+    font-weight: 300;
+  }
+
+  h2 {
+    position: relative;
+    @include font-size(2.5);
+    color: rgba($color__red, 0.8);
+    margin-top: 0;
+
+    &::before {
+			content: '';
+			border-top: 3px solid $color__blue;
+			width: 145px;
+			position: absolute;
+			display: block;
+			top: -10px;
+			left: 50%;
+      transform: translateX(-50%);
+		}
+  }
+
+  .section-featured {
+    background-color: $color__dark;
+    .bcg {
+      opacity: 0.5;
+      background-position: center;
+    }
+
+    p {
+      max-width: 700px;
+      margin: 0 auto 1.5em;
+    }
+  } //.section-featured
+
+
+
+} //.page-template-about

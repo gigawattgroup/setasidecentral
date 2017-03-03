@@ -15,6 +15,8 @@
 	 	<?php wp_nav_menu( array( 'theme_location' => 'about', 'menu_id' => 'page-menu' ) ); ?>
 		<?php elseif ( is_page_template( array('template-pages/learn.php') ) ) : ?>
 	 	<?php wp_nav_menu( array( 'theme_location' => 'learn', 'menu_id' => 'page-menu' ) ); ?>
+  <?php elseif ( is_page_template( array('template-pages/osdbu.php') ) ) : ?>
+	 	<?php wp_nav_menu( array( 'theme_location' => 'osdbu', 'menu_id' => 'page-menu' ) ); ?>
 		<?php endif; ?>
 	</div><!-- .container -->
  </nav><!-- .section-nav -->
