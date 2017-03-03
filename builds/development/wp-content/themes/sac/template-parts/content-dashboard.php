@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying page content in /template-pages/osdbu.php
+ * Template part for displaying page content in /template-pages/dashboard.php
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
