@@ -50,7 +50,6 @@ function sac_setup() {
 		'about' => esc_html__( 'About', 'sac' ),
 		'learn' => esc_html__( 'Learn', 'sac' ),
 		'osdbu' => esc_html__( 'OSDBU', 'sac' ),
-		'dashboard' => esc_html__( 'Dashboard', 'sac' ),
 	) );
 
 	/*
