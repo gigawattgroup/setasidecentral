@@ -120,3 +120,13 @@ function sac_category_transient_flusher() {
 }
 add_action( 'edit_category', 'sac_category_transient_flusher' );
 add_action( 'save_post',     'sac_category_transient_flusher' );
+
+
+
+function sac_remove_autop_for_posttype( $content )
+{
+	 // edit the post type here  
+	 'portfolio' === get_post_type() && remove_filter( 'the_content', 'wpautop' );
+	 return $content;
+}
+add_filter( 'the_content', 'sac_remove_autop_for_posttype', 0 );
