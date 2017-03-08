@@ -9,8 +9,6 @@
   	  inputName = modalContainer.querySelector('#inputName'),
   	  inputEmail = modalContainer.querySelector('#inputEmail');
 
-			console.log(openCtrl);
-
 	function init() {
 		initEvents();
 	}
@@ -29,8 +27,8 @@
 		});
 	}
 
-	function openModal() {
-		console.log("open modal");
+	function openModal(e) {
+		e.preventDefault();
 		modalContainer.classList.add('modal--open');
 		//closeCtrl2.addEventListener('click', closeModal);
 		inputName.focus();
