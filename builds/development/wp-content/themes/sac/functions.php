@@ -163,9 +163,9 @@ add_action( 'wp_enqueue_scripts', 'sac_scripts' );
 /**
  * Custom fields feature.
  */
-// require get_template_directory() . '/inc/custom-fields-setup.php';
-//
-// require get_template_directory() . '/inc/custom-fields.php';
+require get_template_directory() . '/inc/custom-fields-setup.php';
+
+require get_template_directory() . '/inc/custom-fields.php';
 
 /**
  * Implement the Custom Header feature.
