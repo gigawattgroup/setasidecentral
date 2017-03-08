@@ -44,6 +44,7 @@
 
 					if (get_sub_field('slide_button_modal')) {
 						$slide_btn_class = 'btn-modal';
+						$slide_btn_link = '#';
 					}
 
 
