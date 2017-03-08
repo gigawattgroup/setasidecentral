@@ -17,7 +17,7 @@ textarea {
 	color: $color__text-input;
 	border: 1px solid $color__border-input;
 	border-radius: 3px;
-	padding: 3px;
+	padding: .5em;
 
 	&:focus {
 		color: $color__text-input-focus;
@@ -30,4 +30,25 @@ select {
 
 textarea {
 	width: 100%;
+}
+
+.form-group {
+	margin-bottom: 0.75em;
+}
+
+label {
+	text-align: left;
+	display: inline-block;
+	padding: .5em 1em .5em .5em;
+	min-width: 100px;
+}
+
+div.wpcf7 {
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+.wpcf7-submit {
+	display: block !important;
+	margin: 0 auto;
 }

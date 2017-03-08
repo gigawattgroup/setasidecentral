@@ -9,6 +9,15 @@
 
 ?>
 
+<svg class="hidden">
+	<defs>
+		<symbol id="icon-cross" viewBox="0 0 24 24">
+			<title>cross</title>
+			<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+		</symbol>
+	</defs>
+</svg>
+
 
 	<?php
 
@@ -26,7 +35,17 @@
 					$slide_content = get_sub_field('slide_content');
 					$slide_btn_display = get_sub_field('slide_button');
 					$slide_btn_text = get_sub_field('slide_button_text');
-					$slide_btn_link = get_sub_field('slide_button_url');
+					$slide_btn_link = '#';
+					$slide_btn_class = '';
+
+					if (get_sub_field('slide_button_url') || get_sub_field('slide_button_page')) {
+						$slide_btn_link = get_sub_field('slide_button_url');
+					}
+
+					if (get_sub_field('slide_button_modal')) {
+						$slide_btn_class = 'btn-modal';
+					}
+
 
 	?>
 					<div class="owl-lazy" data-src="<?php echo $slide_image['url']; ?>">
@@ -37,11 +56,12 @@
 								<?php echo $slide_content; ?>
 
 								<?php if($slide_btn_display): ?>
-									<a class="btn btn-home" href="<?php echo $slide_btn_link; ?>"><?php echo $slide_btn_text; ?></a>
+									<a class="btn btn-home <?php echo $slide_btn_class; ?>" href="<?php echo $slide_btn_link; ?>"><?php echo $slide_btn_text; ?></a>
 								<?php endif; ?>
 							</div>
 						</div>
 					</div><!-- .slide -->
+
 <?php
 	    endwhile; ?>
 
@@ -171,3 +191,52 @@ else :
 endif;
 
 ?>
+
+
+<?php
+if( have_rows('home-carousel') ):
+
+		while ( have_rows('home-carousel') ) : the_row();
+
+		$post_object = get_sub_field('slide_button_modal');
+
+		if( $post_object ):
+
+			// override $post
+			$post = $post_object;
+			setup_postdata( $post );
+?>
+
+<div id="post-<?php the_ID(); ?>" <?php post_class(array('modal')); ?>>
+	<button id="btn-modal-close" class="btn btn--modal-close" aria-label="Close modal form"><svg class="icon icon--cross"><use xlink:href="#icon-cross"></use></svg></button>
+	<div class="entry-content">
+
+		<?php the_content(); ?>
+
+	</div><!-- .entry-content -->
+</div><!-- /modal -->
+
+<?php
+		wp_reset_postdata(); // IMPORTANT
+ 		endif;
+
+		endwhile;
+
+endif; ?>
+
+
+<!--<h2>Find Out How</h2>
+<p>Sign up to receive updates about the Set Aside Central App!</p>
+<form>
+	<div class="form-group">
+		<label for="exampleInputEmail1">Name</label>
+		<input type="text" class="form-control" id="inputName" placeholder="Name">
+	</div>
+	<div class="form-group">
+		<label for="inputEmail1">Email</label>
+		<input type="email" class="form-control" id="inputEmail" placeholder="Email">
+	</div>
+
+	<button type="submit" class="btn-submit">Sign up</button>
+	<a href="#" class="btn-cancel">Cancel</a>
+</form>-->

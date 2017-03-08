@@ -60,6 +60,12 @@ module.exports = function(grunt) {
 					'<%= paths.src.js %>osdbu.js'
 				],
 				dest: '<%= paths.dest.js %>sac.osdbu.js'
+			},
+			modal: {
+				src: [
+					'<%= paths.src.js %>modal.js'
+				],
+				dest: '<%= paths.dest.js %>sac.modal.js'
 			}
 		}, // concat
 
@@ -107,6 +113,15 @@ module.exports = function(grunt) {
 	      },
         files: {
           '<%= paths.dest.js %>sac.osdbu.min.js': ['<%= paths.dest.js %>sac.osdbu.js']
+        }
+      },
+      modal: {
+				options: {
+	        // the banner is inserted at the top of the output
+	        banner: '/*! <%= pkg.name %> - Modal Page Scripts - v<%= pkg.version %> <%= grunt.template.today("mm/dd/yyyy") %> */\n'
+	      },
+        files: {
+          '<%= paths.dest.js %>sac.modal.min.js': ['<%= paths.dest.js %>sac.modal.js']
         }
       }
     },

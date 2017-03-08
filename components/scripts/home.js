@@ -21,10 +21,10 @@ function callback(e) {
     var curh = ($current.length > 0) ? $current[0].clientHeight : 0;
     var caph = ($caption.length > 0) ? ($caption[0].clientHeight + 41) : 0;
 
-    console.dir($current[0]);
-    console.dir($caption[0]);
-    console.log('curh: '+curh);
-    console.log('caph: '+caph);
+    // console.dir($current[0]);
+    // console.dir($caption[0]);
+    // console.log('curh: '+curh);
+    // console.log('caph: '+caph);
 
     if ( caph <= curh ) {
       owl.addClass("centerr");

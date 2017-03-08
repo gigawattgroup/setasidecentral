@@ -1,0 +1,133 @@
+.modal {
+  display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background: rgba($color__blue, 0.9);
+  color: $color__light;
+  @include font-size(1);
+  @include breakpoint($screen-sm) {
+    @include font-size(1.5);
+  }
+
+  position: fixed;
+	z-index: 1000;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+
+  // transition
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s;
+
+  &::before,
+  &::after {
+  	content: '';
+  	position: absolute;
+  	width: calc(100% + 15px);
+  	height: calc(100% + 15px);
+  	pointer-events: none;
+  	border: 1em solid $color__blue;
+    @include breakpoint($screen-sm) {
+      border: 1.5em solid $color__blue;
+    }
+    transition: transform 0.5s;
+  }
+
+  &::before {
+  	top: 0;
+  	left: 0;
+  	border-right-width: 0;
+  	border-bottom-width: 0;
+    transform: translate3d(-15px, -15px, 0);
+  }
+
+  &::after {
+  	right: 0;
+  	bottom: 0;
+  	border-top-width: 0;
+  	border-left-width: 0;
+    transform: translate3d(15px, 15px, 0);
+  }
+
+  .icon {
+  	display: block;
+  	width: 1.5em;
+  	height: 1.5em;
+  	margin: 0 auto;
+  	fill: currentColor;
+  }
+
+  .btn--modal-close {
+  	font-size: 2em;
+  	position: absolute;
+  	top: 1.25em;
+  	right: 1.25em;
+  	display: block;
+    padding: 0;
+    background: none;
+    border: none;
+  }
+
+  &.modal--open {
+  	pointer-events: auto;
+  	opacity: 1;
+  }
+
+
+  &.modal--open::before,
+  &.modal--open::after {
+  	transform: translate3d(0, 0, 0);
+  }
+
+  /* Close button */
+  .btn--modal-close {
+  	opacity: 0;
+  	transform: scale3d(0.8, 0.8, 1);
+  	transition: opacity 0.5s, transform 0.5s;
+  }
+
+  &.modal--open .btn--modal-close {
+  	opacity: 1;
+  	transform: scale3d(1, 1, 1);
+  }
+
+  .entry-content {
+    padding: 0 1em;
+    @include breakpoint($screen-sm) {
+      padding: 0 1.5em;
+    }
+  }
+
+  input[type="text"],
+  input[type="email"] {
+    min-width: 350px;
+  }
+
+  .btn-submit {
+    margin: 1em auto;
+  }
+
+  .btn-cancel {
+    display: block;
+    text-transform: uppercase;
+    color: $color__light;
+    @include font-size(1);
+    &:visited, &:focus {
+      color: $color__light;
+    }
+  }
+
+
+} // .modal
+
+.hidden {
+	position: absolute;
+	overflow: hidden;
+	width: 0;
+	height: 0;
+	pointer-events: none;
+}

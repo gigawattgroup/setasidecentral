@@ -137,7 +137,7 @@
 
 	& > .container {
 		text-align: justify;
-		@include breakpoint($screen-sm) { padding: 1em 0; }
+		@include breakpoint($screen-sm) { padding: 1.2em 0; }
 		&::after {
 			@include breakpoint($screen-sm) {
 				content: '';
@@ -221,7 +221,7 @@
 		font-weight: 600;
 		text-transform: uppercase;
 		border-top: 2px solid rgba($color__dark, .1);
-		@include font-size(1.125);
+		@include font-size(1);
 
 		@include breakpoint($screen-sm) { display:inline-block; border-top: none; }
 
@@ -253,7 +253,7 @@
 				}
 
 				a {
-					padding: 0 30px;
+					padding: 0 20px;
 				} // a
 
 				&:last-child {
@@ -359,3 +359,29 @@
 		display: inline-block;
 	}
 } //#page-menu
+
+
+button.hamburger {
+	&:focus {
+		outline: 0 !important;
+	}
+
+	&:hover {
+		
+	}
+
+} //.hamburger
+
+
+.hamburger:hover {
+	border: none;
+	opacity: 1;
+	.hamburger-inner {
+		background-color: $color__red;
+
+		&::before, &::after {
+			background-color: $color__red;
+		}
+	}
+
+} //.hamburger
